@@ -29,6 +29,11 @@ export const AppRouter = () => {
                         path = '/crear'
                         component = { () => (<p> hola desde la localidad crear</p>)}
                     />
+                    <Route
+                        exact
+                        path = '/gestionar'
+                        component = { () => (<p>Ruta para gestionar las recetas</p>)}
+                    />
 
                     <Redirect
                         to = '/'
