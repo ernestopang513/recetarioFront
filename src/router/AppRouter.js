@@ -6,10 +6,31 @@ import {
     Redirect,
     Link
   } from "react-router-dom";
+import { BuscarScreen } from '../components/BuscarScreen';
 import { HomeScreen } from '../components/HomeScreen';
 export const AppRouter = () => {
     return (
         <Router>
+            <header>
+                <h1>Recetario familiar</h1>
+
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to = '/'>Home</Link>
+                        </li>
+                        <li>
+                            <Link to = '/buscar'>Buscar</Link>
+                        </li>
+                        <li>
+                            <Link to = '/crear'>Crear</Link>
+                        </li>
+                        <li>
+                            <Link to = '/gestionar'>Gestionar</Link>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
             <div>
                  <Switch>
                     <Route
@@ -21,7 +42,7 @@ export const AppRouter = () => {
                     <Route
                         exact
                         path = '/buscar'
-                        component = {()=>{return(<h1>Buscar component</h1>)}}
+                        component = {BuscarScreen}
                     />
 
                     <Route
