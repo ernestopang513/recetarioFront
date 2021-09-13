@@ -7,7 +7,8 @@ import {
     Link
   } from "react-router-dom";
 import { BuscarScreen } from '../components/BuscarScreen';
-import { HomeScreen } from '../components/HomeScreen';
+import { HomeScreen } from '../components/home/HomeScreen';
+import { RecetaScreen } from '../components/recetasScreen/RecetaScreen';
 export const AppRouter = () => {
     return (
         <Router>
@@ -54,6 +55,11 @@ export const AppRouter = () => {
                         exact
                         path = '/gestionar'
                         component = { () => (<p>Ruta para gestionar las recetas</p>)}
+                    />
+                    <Route
+                        exact
+                        path = '/receta/:recetaId'
+                        component = { RecetaScreen}
                     />
 
                     <Redirect

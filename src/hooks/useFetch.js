@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { obtenerRecetas } from "../helpers/recetas";
+import { obtenerRecetaId, obtenerRecetas } from "../helpers/recetas";
 
 
 export const useFetch = () => {
@@ -20,6 +20,30 @@ export const useFetch = () => {
             })
         
     }, []);
+
+    return state
+
+
+
+}
+export const useFetch2 = (parametro = '') => {
+
+    const [state, setState] = useState({
+        data: [],
+        loading: true
+    });
+
+
+    useEffect(() => {
+        obtenerRecetaId(parametro)
+            .then(data => {
+                setState({
+                    data,
+                    loading: false
+                });
+            })
+        
+    }, [parametro]);
 
     return state
 

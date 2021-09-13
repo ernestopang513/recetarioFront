@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useFetchBusqueda } from '../hooks/useFetchBusqueda';
 import { ResultadosDiv } from './ResultadosDiv';
 
 export const BuscarScreen = () => {
@@ -33,7 +32,7 @@ export const BuscarScreen = () => {
                     autoComplete = 'off'
                     onChange = {handleInputChange}
                 />
-                <p>{inputValue}</p>
+                
                 <input 
                     type = 'submit'
                 />
