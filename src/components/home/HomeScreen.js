@@ -4,6 +4,7 @@ import { RecetaItem } from '../RecetaItem';
 
 export const HomeScreen = () => {
     const {data, loading} = useFetch();
+    console.log(data)
     return (
         <div>
             <div>

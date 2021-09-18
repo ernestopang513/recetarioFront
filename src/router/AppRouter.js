@@ -7,6 +7,7 @@ import {
     Link
   } from "react-router-dom";
 import { BuscarScreen } from '../components/BuscarScreen';
+import { CrearReceta } from '../components/crearReceta/CrearReceta';
 import { HomeScreen } from '../components/home/HomeScreen';
 import { RecetaScreen } from '../components/recetasScreen/RecetaScreen';
 export const AppRouter = () => {
@@ -49,7 +50,7 @@ export const AppRouter = () => {
                     <Route
                         exact
                         path = '/crear'
-                        component = { () => (<p> hola desde la localidad crear</p>)}
+                        component = { CrearReceta}
                     />
                     <Route
                         exact

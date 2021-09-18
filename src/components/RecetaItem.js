@@ -7,6 +7,7 @@ export const RecetaItem = ({receta}) => {
             <h5>{receta.nombre}</h5>
 
             {
+                
                     receta.ingredientes.map( (ingrediente, i) => (<p key = {i}>{ingrediente}</p>))                    
             }
             <Link
