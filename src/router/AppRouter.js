@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+// import '../App.css';
 import {
     BrowserRouter as Router,
     Switch,
@@ -13,20 +14,20 @@ import { RecetaScreen } from '../components/recetasScreen/RecetaScreen';
 export const AppRouter = () => {
     return (
         <Router>
-            <header>
-                <h1>Recetario familiar</h1>
+            <header className = 'marginTop1rem' >
+                <h1 className = 'marginBottom1rem' >Recetario familiar</h1>
 
-                <nav>
-                    <ul>
-                        <li>
+                <nav className = 'marginBottom1rem'>
+                    <ul >
+                        <li className = 'marginBottomMrem'>
                             <Link to = '/'>Home</Link>
                         </li>
-                        <li>
+                        <li className = 'marginBottomMrem'>
                             <Link to = '/buscar'>Buscar</Link>
                         </li>
-                        <li>
+                        <li className = 'marginBottomMrem'>
                             <Link to = '/crear'>Crear</Link>
-                        </li>
+                        </li >
                         <li>
                             <Link to = '/gestionar'>Gestionar</Link>
                         </li>

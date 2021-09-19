@@ -14,13 +14,18 @@ export const RecetaItem = ({nombre, ingredientes =[], procedimiento= []}) => {
 
             <h4>Ingredientes</h4>
 
+            <ul>
             {
-                ingredientes.map((ing,i) => (<p key = {i}>{ing}</p>))
+                ingredientes.map((ing,i) => (<li key = {i}>{ing}</li>))
             }
+            </ul>
+            
             <h4>Procedimiento</h4>
+            <ol>
             {
-                procedimiento.map((paso,i) => (<p key = {i}>{paso}</p>))
+                procedimiento.map((paso,i) => (<li key = {i}>{paso}</li>))
             }
+            </ol>
         </div>
     )
 }

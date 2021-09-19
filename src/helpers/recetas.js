@@ -1,8 +1,8 @@
 
 const obtenerRecetas = async() => {
   try {
-    const response = await fetch('http://localhost:8080/api/recetas',{
-      mode: 'cors'
+    const response = await fetch('http://localhost:8080/api/recetas/',{
+      mode: "cors"
     })
     const body = await response.json();
     // const res = body.recetas.map( (receta) => {
@@ -12,13 +12,13 @@ const obtenerRecetas = async() => {
     // });
 
     const res = [...body.recetas];
-    console.log(body);
-    // const res = [...body];
-    console.log(res);
+    // console.log(body);
+    // // const res = [...body];
+    // console.log(res);
     return res;
   } catch (error) {
     console.log(error);
-    
+    return null
   }
 };
 const obtenerRecetaId = async(parametro= '') => {
@@ -40,7 +40,7 @@ const obtenerRecetaId = async(parametro= '') => {
     return res;
   } catch (error) {
     console.log(error);
-    // return null
+    return []
   }
 };
 

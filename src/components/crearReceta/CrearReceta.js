@@ -11,9 +11,9 @@ import './crearReceta.css';
 export const CrearReceta = () => {
     return (
         <>
-            <form className= "formContainer container">
+            <form className= "formContainer container" onSubmit = {()=> {console.log('submit')}}>
                 
-            <label>Nombre</label>
+            <label className= 'marginTop1rem' >Nombre</label>
             <input type= 'text'/>
 
             <label>Ingredientes</label>
@@ -21,6 +21,7 @@ export const CrearReceta = () => {
 
             <label>Procedimiento</label>
             <textarea />
+            <input type = 'submit' value= 'Subir receta' />
             </form>   
         </>
     )

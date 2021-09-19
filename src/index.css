@@ -5,6 +5,10 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+*{
+  margin: 0;
+}
+
 
 .container{
   margin: 0 auto;
@@ -24,4 +28,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.marginTop1rem{
+  margin-top: 1rem;
+}
+.marginTopMrem{
+  margin-top: 0.5rem;
+}
+
+.marginBottom1rem{
+  margin-bottom: 1rem;
+}
+.marginBottomMrem{
+  margin-bottom: 0.5rem;
 }

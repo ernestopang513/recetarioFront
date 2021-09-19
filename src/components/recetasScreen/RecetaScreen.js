@@ -6,16 +6,21 @@ import { RecetaItem } from './RecetaItem';
 export const RecetaScreen = () => {
 
     const {recetaId} = useParams();
-    const {data: receta,loading} = useFetch2(recetaId);
+    const {data:receta,loading} = useFetch2(recetaId);
     
     return (
         <div>
 
             {loading && <p>Cargando ...</p>}
 
-            <RecetaItem
-            {...receta}
-            />
+            {
+                !loading && receta.length !== 0 &&
+                <RecetaItem {...receta} />
+
+            }
+            
+            
+            
             {/* <h3>Receta por id</h3>
 
             <h4>{data.nombre}</h4>

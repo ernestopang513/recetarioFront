@@ -6,19 +6,36 @@ export const useFetch = () => {
 
     const [state, setState] = useState({
         data: [],
-        loading: true
+        loading: true,
+        error: {
+            value: false,
+            msg: ''
+        }
     });
 
 
     useEffect(() => {
         obtenerRecetas()
             .then(data => {
+                (data)?
                 setState({
                     data,
-                    loading: false
-                });
+                    loading: false,
+                    error: {
+                        value: false,
+                        msg: ''
+                    }
+                })
+                :
+                setState({
+                    data,
+                    loading:false,
+                    error: {
+                        valule: true,
+                        msg:'Algo salio mal'
+                    }
+                })
             })
-        
     }, []);
 
     return state

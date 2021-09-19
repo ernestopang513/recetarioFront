@@ -24,7 +24,7 @@ export const BuscarScreen = () => {
     return (
         <div>
             <h2>Búsquedas encontradas</h2>
-            <form   onSubmit = {handleSubmit}>
+            <form   onSubmit = {handleSubmit} className= 'formContainer container'>
                 <label>Buca tu receta</label>
                 <input
                     type= 'text' 
@@ -38,9 +38,11 @@ export const BuscarScreen = () => {
                     type = 'submit'
                 />
             </form>
+            {(buscar &&
             <ResultadosDiv
                 buscar = {buscar}
-            />
+            />)
+            }
         </div>
     )
 }
