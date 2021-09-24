@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './crearReceta.css';
 // {
 //     "nombre": "Caldo de camaron",
@@ -8,19 +8,58 @@ import './crearReceta.css';
 
 
 
+
+
+
+
+
 export const CrearReceta = () => {
-    return (
+
+    const [InputForm, setInputForm] = useState({
+        nombre: '',
+        ingredientes: '',
+        procedimiento: ''
+    });
+    
+    const {nombre,ingredientes,procedimiento} = InputForm;
+            
+    const handleInputChange = ({target}) => {
+    setInputForm({
+        ...InputForm,
+        [target.name]: target.value
+        })
+    }
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(nombre,ingredientes,procedimiento)
+    }
+            return (
         <>
-            <form className= "formContainer container" onSubmit = {()=> {console.log('submit')}}>
+            <form className= "formContainer container" onSubmit = {handleSubmit}>
                 
             <label className= 'marginTop1rem' >Nombre</label>
-            <input type= 'text'/>
+            <input 
+                name = 'nombre'
+                value = {nombre} 
+                type= 'text'
+                onChange = {handleInputChange}
+            />
 
             <label>Ingredientes</label>
-            <textarea />
+            <textarea 
+                name = 'ingredientes'
+                value = {ingredientes}
+                onChange = {handleInputChange}
+            />
 
             <label>Procedimiento</label>
-            <textarea />
+            <textarea
+                name = 'procedimiento'
+                value = {procedimiento} 
+                onChange = {handleInputChange}
+            />
             <input type = 'submit' value= 'Subir receta' />
             </form>   
         </>

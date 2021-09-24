@@ -43,3 +43,7 @@ code {
 .marginBottomMrem{
   margin-bottom: 0.5rem;
 }
+
+.displayBlock{
+  display: block;
+}
