@@ -39,7 +39,8 @@ const fetchConToken = async(endpoint, optional = '', data, method = 'GET') => {
         try {
             const respuesta = await fetch(url,{
                 headers: {
-                    'x-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MGY1MzkyYTI4NjA4NDBjNjgwOTg4NTQiLCJpYXQiOjE2MzE1NjUzNDYsImV4cCI6MTYzNDE1NzM0Nn0.Td6gr64_EZpCDMd9E-xUIaLj2cLBYflmiJh37OGk9CI'
+                    'x-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MGY1MzkyYTI4NjA4NDBjNjgwOTg4NTQiLCJpYXQiOjE2MzI3ODE3OTMsImV4cCI6MTYzNTM3Mzc5M30.PCFmPlysqIdOeSzdVBLWpJpaFHiufbyMKPGCJURsKp4',
+                    'content-type': 'application/json'
                 }
             });
             const body = await respuesta.json();
@@ -53,7 +54,7 @@ const fetchConToken = async(endpoint, optional = '', data, method = 'GET') => {
             const respuesta = await fetch(url,{
                 method,
                 headers:{
-                    'x-token': 'token',
+                    'x-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MGY1MzkyYTI4NjA4NDBjNjgwOTg4NTQiLCJpYXQiOjE2MzI3ODE3OTMsImV4cCI6MTYzNTM3Mzc5M30.PCFmPlysqIdOeSzdVBLWpJpaFHiufbyMKPGCJURsKp4',
                     'content-type': 'application/json'
                 },
                 body: JSON.stringify(data)

@@ -40,6 +40,7 @@ export const BuscarScreen = () => {
             </form>
             {(buscar &&
             <ResultadosDiv
+            
                 buscar = {buscar}
             />)
             }

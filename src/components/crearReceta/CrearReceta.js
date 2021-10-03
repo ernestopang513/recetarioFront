@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useFetchCrearReceta } from '../../hooks/useFetchCrearReceta';
 import './crearReceta.css';
 // {
 //     "nombre": "Caldo de camaron",
@@ -8,32 +9,59 @@ import './crearReceta.css';
 
 
 
+const useForm = (initialState = {}) => {
+    const [values, setValues] = useState(initialState);
+
+    function resetValues() {
+        setValues({
+            nombre: '',
+            ingredientes: '',
+            procedimiento: ''
+        });
+    }
 
 
-
+    const handleInputChange = ({target}) => {
+        
+    setValues({
+        ...values,
+        [target.name]: target.value
+        })
+    }
+    return [values, handleInputChange, resetValues];
+}
 
 
 export const CrearReceta = () => {
 
-    const [InputForm, setInputForm] = useState({
-        nombre: '',
-        ingredientes: '',
-        procedimiento: ''
-    });
     
-    const {nombre,ingredientes,procedimiento} = InputForm;
-            
-    const handleInputChange = ({target}) => {
-    setInputForm({
-        ...InputForm,
-        [target.name]: target.value
-        })
-    }
-
-
+    const [variable, setVariable] = useState(false);
+    const [formValues,handleInputChange, resetValues] = useForm()            
+    const {nombre='',ingredientes = '',procedimiento = ''} = formValues;
+    const [{data,loading,error,msg}, postFuntion ] = useFetchCrearReceta();
+    console.log('fuera del handlesubmit',error)
+    useEffect(() => {
+        setTimeout(() => {
+            setVariable(false)
+        }, 5000);
+        
+    }, [variable])
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(nombre,ingredientes,procedimiento)
+        if(nombre.replace(/\s+/g, '').length < 4 || ingredientes.replace(/\s+/g, '').length < 4 || procedimiento.replace(/\s+/g, '').length < 4){
+            alert('nop');
+            return;
+        }
+        // setUpload(formValues);
+        postFuntion('recetas', undefined, formValues,'POST');
+        resetValues();
+        if(error){
+            console.log('Solo si hay error',error)
+            setVariable(true);
+        }
+        
+        
+        // console.log('handleSubmit',upload)
     }
             return (
         <>
@@ -45,6 +73,7 @@ export const CrearReceta = () => {
                 value = {nombre} 
                 type= 'text'
                 onChange = {handleInputChange}
+                autoComplete = 'off'
             />
 
             <label>Ingredientes</label>
@@ -60,8 +89,21 @@ export const CrearReceta = () => {
                 value = {procedimiento} 
                 onChange = {handleInputChange}
             />
-            <input type = 'submit' value= 'Subir receta' />
+            <input 
+                type = 'submit' value= 'Subir receta'
+                disabled = {loading}
+             />
             </form>   
+
+            {
+                loading &&
+                <span>Cargando</span>
+            }
+            
+            {
+                variable && <span>{msg}</span>
+            }
+           
         </>
     )
 }
