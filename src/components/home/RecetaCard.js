@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './RecetaItem1.css'
 
-export const RecetaItem = ({receta}) => {
+export const RecetaCard = ({receta}) => {
     return (
         <div className = 'cardReceta' >
             <h5 className = 'marginBottomMrem'>{receta.nombre}</h5>

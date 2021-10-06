@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useFetchCrearReceta } from '../../hooks/useFetchCrearReceta';
+import { RecetaItem } from '../recetasScreen/RecetaItem';
 import './crearReceta.css';
 // {
 //     "nombre": "Caldo de camaron",
@@ -34,34 +35,17 @@ const useForm = (initialState = {}) => {
 
 export const CrearReceta = () => {
 
-    
-    const [variable, setVariable] = useState(false);
     const [formValues,handleInputChange, resetValues] = useForm()            
     const {nombre='',ingredientes = '',procedimiento = ''} = formValues;
     const [{data,loading,error,msg}, postFuntion ] = useFetchCrearReceta();
-    console.log('fuera del handlesubmit',error)
-    useEffect(() => {
-        setTimeout(() => {
-            setVariable(false)
-        }, 5000);
-        
-    }, [variable])
     const handleSubmit = (e) => {
         e.preventDefault();
         if(nombre.replace(/\s+/g, '').length < 4 || ingredientes.replace(/\s+/g, '').length < 4 || procedimiento.replace(/\s+/g, '').length < 4){
             alert('nop');
             return;
         }
-        // setUpload(formValues);
         postFuntion('recetas', undefined, formValues,'POST');
         resetValues();
-        if(error){
-            console.log('Solo si hay error',error)
-            setVariable(true);
-        }
-        
-        
-        // console.log('handleSubmit',upload)
     }
             return (
         <>
@@ -101,9 +85,15 @@ export const CrearReceta = () => {
             }
             
             {
-                variable && <span>{msg}</span>
+                error && <span>{msg}</span>
             }
-           
+          
+            {
+                data && <pre>{JSON.stringify(data)}</pre>
+            }
+            {
+                data && <RecetaItem {...data}/>
+            }
         </>
     )
 }

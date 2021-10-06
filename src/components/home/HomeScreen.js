@@ -1,6 +1,6 @@
 import React from 'react'
 import { useFetch } from '../../hooks/useFetch'
-import { RecetaItem } from './RecetaItem';
+import { RecetaCard } from './RecetaCard';
 
 export const HomeScreen = () => {
     const {data:{recetas} , loading,error} = useFetch('recetas', undefined, undefined, undefined);
@@ -11,7 +11,7 @@ export const HomeScreen = () => {
             {loading && <p>Cargando....</p>}
             {
             (recetas) ?
-            recetas.map(receta => (<RecetaItem
+            recetas.map(receta => (<RecetaCard
             key = {receta._id}
             receta = {receta}
             />))

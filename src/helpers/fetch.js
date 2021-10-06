@@ -60,10 +60,11 @@ const fetchConToken = async(endpoint, optional = '', data, method = 'GET') => {
                 body: JSON.stringify(data)
             });
             const body = await respuesta.json();
-            return body;
+            console.log(body);
+            return body.receta;
             
         } catch (error) {
-            console.log(error)
+            console.log('hola soy un error',error)
             return null
         }
     }
