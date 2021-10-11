@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useFetchCrearReceta } from '../../hooks/useFetchCrearReceta';
 import { RecetaItem } from '../recetasScreen/RecetaItem';
+import {useForm} from '../../hooks/useForm'
 import './crearReceta.css';
+
+
 // {
 //     "nombre": "Caldo de camaron",
 //     "ingredientes": ["camaron", "papas", "SAL", "zanahorias"],
@@ -10,27 +13,27 @@ import './crearReceta.css';
 
 
 
-const useForm = (initialState = {}) => {
-    const [values, setValues] = useState(initialState);
+// const useForm = (initialState = {}) => {
+//     const [values, setValues] = useState(initialState);
 
-    function resetValues() {
-        setValues({
-            nombre: '',
-            ingredientes: '',
-            procedimiento: ''
-        });
-    }
+//     function resetValues() {
+//         setValues({
+//             nombre: '',
+//             ingredientes: '',
+//             procedimiento: ''
+//         });
+//     }
 
 
-    const handleInputChange = ({target}) => {
+//     const handleInputChange = ({target}) => {
         
-    setValues({
-        ...values,
-        [target.name]: target.value
-        })
-    }
-    return [values, handleInputChange, resetValues];
-}
+//     setValues({
+//         ...values,
+//         [target.name]: target.value
+//         })
+//     }
+//     return [values, handleInputChange, resetValues];
+// }
 
 
 export const CrearReceta = () => {

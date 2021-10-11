@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { fetchConToken } from "../helpers/fetch"
 
 
@@ -55,23 +55,6 @@ export const useFetchCrearReceta = () => {
                 })
             }, 3000);
         }
-
-            // .then(data => {
-            //     (data)?
-            //     setState({
-            //         data,
-            //         loading: false,
-            //         error: false,
-            //         msg: ''
-            //     })
-            //     :
-            //     setState({
-            //         data,
-            //         loading: false,
-            //         error: true,
-            //         msg: 'Algo salio mal'
-            //     })
-            // })
     }
         
 

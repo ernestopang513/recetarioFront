@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 // import '../App.css';
 import {
     BrowserRouter as Router,
@@ -7,11 +7,16 @@ import {
     Redirect,
     Link
   } from "react-router-dom";
+import { LoginScreen } from '../components/auth/LoginScreen';
 import { BuscarScreen } from '../components/BuscarScreen';
 import { CrearReceta } from '../components/crearReceta/CrearReceta';
 import { HomeScreen } from '../components/home/HomeScreen';
 import { RecetaScreen } from '../components/recetasScreen/RecetaScreen';
+import { PrivateRoute } from './PrivateRoute';
 export const AppRouter = () => {
+    const [uid, setUid] = useState('');
+
+    
     return (
         <Router>
             <header className = 'marginTop1rem' >
@@ -28,8 +33,11 @@ export const AppRouter = () => {
                         <li className = 'marginBottomMrem'>
                             <Link to = '/crear'>Crear</Link>
                         </li >
-                        <li>
+                        <li className = 'marginBottomMrem'>
                             <Link to = '/gestionar'>Gestionar</Link>
+                        </li>
+                        <li>
+                            <Link to = '/privada'>Privada pruebas</Link>
                         </li>
                     </ul>
                 </nav>
@@ -60,10 +68,25 @@ export const AppRouter = () => {
                     />
                     <Route
                         exact
+                        path = '/login'
+            
+                    >
+                        <LoginScreen setUid = {setUid}/>
+                    </Route>
+                    <Route
+                        exact
                         path = '/receta/:recetaId'
                         component = { RecetaScreen}
                     />
 
+                    <PrivateRoute
+                       path = '/privada' 
+                       exact
+                       component = {() => (
+                            <h1>Ruta privada</h1>
+                       )}
+                       isAuthenticated = {!!uid}
+                    />
                     <Redirect
                         to = '/'
                     />
