@@ -13,9 +13,10 @@ import { CrearReceta } from '../components/crearReceta/CrearReceta';
 import { HomeScreen } from '../components/home/HomeScreen';
 import { RecetaScreen } from '../components/recetasScreen/RecetaScreen';
 import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './PublicRoute';
 export const AppRouter = () => {
     const [uid, setUid] = useState('');
-
+    console.log(!!uid)
     
     return (
         <Router>
@@ -35,6 +36,9 @@ export const AppRouter = () => {
                         </li >
                         <li className = 'marginBottomMrem'>
                             <Link to = '/gestionar'>Gestionar</Link>
+                        </li>
+                        <li className = 'marginBottomMrem'>
+                            <Link to = '/auth/login'>Login</Link>
                         </li>
                         <li>
                             <Link to = '/privada'>Privada pruebas</Link>
@@ -73,14 +77,21 @@ export const AppRouter = () => {
                         component = { RecetaScreen}
                     />
 
-                    <Route
+                    {/* <Route
                         exact
                         path = '/login'
             
                     >
                         <LoginScreen setUid = {setUid}/>
-                    </Route>
-
+                    </Route> */}
+                    
+                    <PublicRoute
+                       path = '/auth/login' 
+                       exact
+                       component = {LoginScreen}
+                       isAuthenticated = {!!uid}
+                       propiedades = {{setUid}}
+                    />
                     <PrivateRoute
                        path = '/privada' 
                        exact
