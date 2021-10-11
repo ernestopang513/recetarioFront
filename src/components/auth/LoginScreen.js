@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Redirect } from 'react-router';
+import { Redirect, useHistory } from 'react-router';
 import { fetchSinToken } from '../../helpers/fetch';
 import { useForm } from '../../hooks/useForm';
 
 export const LoginScreen = ({setUid}) => {
+    const history = useHistory();
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(false);
     const [error, seterror] = useState({
@@ -32,6 +33,8 @@ export const LoginScreen = ({setUid}) => {
             console.log(body)
             localStorage.setItem('token', body.token);
             setUid(body.usuario.uid);
+            setLoading(false);
+            history.push('/privada');
             
             
         } catch (error) {
@@ -40,11 +43,8 @@ export const LoginScreen = ({setUid}) => {
                 msg: 'Hubo un error'
             })
             console.log(error)
+            setLoading(false);
         }
-        setLoading(false);
-
-
-        
     }
 
 

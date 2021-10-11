@@ -66,6 +66,13 @@ export const AppRouter = () => {
                         path = '/gestionar'
                         component = { () => (<p>Ruta para gestionar las recetas</p>)}
                     />
+                    
+                    <Route
+                        exact
+                        path = '/receta/:recetaId'
+                        component = { RecetaScreen}
+                    />
+
                     <Route
                         exact
                         path = '/login'
@@ -73,11 +80,6 @@ export const AppRouter = () => {
                     >
                         <LoginScreen setUid = {setUid}/>
                     </Route>
-                    <Route
-                        exact
-                        path = '/receta/:recetaId'
-                        component = { RecetaScreen}
-                    />
 
                     <PrivateRoute
                        path = '/privada' 
