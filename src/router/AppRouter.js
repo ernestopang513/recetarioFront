@@ -22,13 +22,15 @@ export const AppRouter = () => {
         <Router>
             <header className = 'marginTop1rem' >
                 <h1 className = 'marginBottom1rem' >Recetario familiar</h1>
+                
+            </header>
 
                 <nav className = 'marginBottom1rem'>
                     <ul >
                         <li className = 'marginBottomMrem'>
                             <Link to = '/'>Home</Link>
                         </li>
-                        <li className = 'marginBottomMrem'>
+                        <li     className = 'marginBottomMrem'>
                             <Link to = '/buscar'>Buscar</Link>
                         </li>
                         <li className = 'marginBottomMrem'>
@@ -37,15 +39,14 @@ export const AppRouter = () => {
                         <li className = 'marginBottomMrem'>
                             <Link to = '/gestionar'>Gestionar</Link>
                         </li>
-                        <li className = 'marginBottomMrem'>
+                        {/* <li className = 'marginBottomMrem'>
                             <Link to = '/auth/login'>Login</Link>
-                        </li>
-                        <li>
-                            <Link to = '/privada'>Privada pruebas</Link>
-                        </li>
+                        </li> */}
+                        {/* <li> */}
+                            {/* <Link to = '/crear'>Privada pruebas</Link> */}
+                        {/* </li> */}
                     </ul>
                 </nav>
-            </header>
             <div>
                  <Switch>
                     <Route
@@ -60,11 +61,11 @@ export const AppRouter = () => {
                         component = {BuscarScreen}
                     />
 
-                    <Route
+                    {/* <Route
                         exact
                         path = '/crear'
                         component = { CrearReceta}
-                    />
+                    /> */}
                     <Route
                         exact
                         path = '/gestionar'
@@ -93,11 +94,9 @@ export const AppRouter = () => {
                        propiedades = {{setUid}}
                     />
                     <PrivateRoute
-                       path = '/privada' 
+                       path = '/crear' 
                        exact
-                       component = {() => (
-                            <h1>Ruta privada</h1>
-                       )}
+                       component = {CrearReceta}
                        isAuthenticated = {!!uid}
                     />
                     <Redirect

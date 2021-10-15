@@ -37,6 +37,7 @@ const obtenerRecetaId = async(parametro= '') => {
     // });
 
     const res = body.receta;
+    console.log(body)
     return res;
   } catch (error) {
     console.log(error);

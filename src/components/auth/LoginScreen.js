@@ -35,9 +35,7 @@ export const LoginScreen = ({setUid}) => {
             localStorage.setItem('token', body.token);
             setUid(body.usuario.uid);
             setLoading(false);
-            history.push('/privada');
-            
-            
+            history.push('/crear');
         } catch (error) {
             seterror({
                 value: true,

@@ -14,10 +14,13 @@ export const RecetaScreen = () => {
             {loading && <p>Cargando ...</p>}
 
             {
-                !loading && receta.length !== 0 &&
-                <RecetaItem {...receta} />
+               receta && !loading && receta.length !== 0 ?
+                <RecetaItem {...receta} /> :
+                <span>Hubo un error</span>
 
             }
+
+            
             
             
             
