@@ -16,7 +16,10 @@ import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 export const AppRouter = () => {
     const [uid, setUid] = useState('');
+    // const [name, setName] = useState('');
     console.log(!!uid)
+    console.log(uid)
+    // console.log(!!name)
     
     return (
         <Router>

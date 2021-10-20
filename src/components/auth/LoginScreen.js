@@ -4,7 +4,7 @@ import { fetchSinToken } from '../../helpers/fetch';
 import { useForm } from '../../hooks/useForm';
 
 export const LoginScreen = ({setUid}) => {
-    console.log(setUid)
+    // console.log(setUid)
     const history = useHistory();
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(false);
@@ -34,8 +34,9 @@ export const LoginScreen = ({setUid}) => {
             console.log(body)
             localStorage.setItem('token', body.token);
             setUid(body.usuario.uid);
+            // setName(body.usuario.nombre);
             setLoading(false);
-            history.push('/crear');
+            // history.push('/crear');
         } catch (error) {
             seterror({
                 value: true,
@@ -44,6 +45,7 @@ export const LoginScreen = ({setUid}) => {
             console.log(error)
             setLoading(false);
         }
+        // history.push('/crear');
     }
 
 
