@@ -16,16 +16,35 @@ import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 export const AppRouter = () => {
     const [uid, setUid] = useState('');
-    // const [name, setName] = useState('');
-    console.log(!!uid)
-    console.log(uid)
-    // console.log(!!name)
-    
+    const [name, setName] = useState('');
+
+    useEffect(() => {
+        
+        // const token = localStorage.getItem('token') || '';
+        const name1 = localStorage.getItem('name') || '';
+        const uid1 = localStorage.getItem('uid') || '';
+
+        setUid(uid1);
+        setName(name1);
+
+    }, []);
+    // console.log(!!uid)
+    // console.log(uid)
+    // console.log(!!name)    
     return (
         <Router>
             <header className = 'marginTop1rem' >
                 <h1 className = 'marginBottom1rem' >Recetario familiar</h1>
                 
+                {
+                    uid     &&
+                    <button 
+                        className = 'centralContainer'
+                        onClick = {() => {
+                            localStorage.clear();
+                            setUid('')}}
+                    >Log out</button>
+                }
             </header>
 
                 <nav className = 'marginBottom1rem'>
@@ -94,7 +113,7 @@ export const AppRouter = () => {
                        exact
                        component = {LoginScreen}
                        isAuthenticated = {!!uid}
-                       propiedades = {{setUid}}
+                       propiedades = {{setUid,setName}}
                     />
                     <PrivateRoute
                        path = '/crear' 
@@ -108,7 +127,8 @@ export const AppRouter = () => {
 
                  </Switch>
             </div>
-        </Router>
 
+            
+        </Router>
     )
 }

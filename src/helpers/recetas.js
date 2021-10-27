@@ -22,11 +22,12 @@ const obtenerRecetas = async() => {
   }
 };
 const obtenerRecetaId = async(parametro= '') => {
+  const token = localStorage.getItem('token') || '';
   try {
     const response = await fetch(`http://localhost:8080/api/recetas/${parametro}`,{
       mode: 'cors',
       headers: {
-        'x-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MGY1MzkyYTI4NjA4NDBjNjgwOTg4NTQiLCJpYXQiOjE2MzE1NjUzNDYsImV4cCI6MTYzNDE1NzM0Nn0.Td6gr64_EZpCDMd9E-xUIaLj2cLBYflmiJh37OGk9CI'
+        'x-token': token
       }
     })
     const body = await response.json();

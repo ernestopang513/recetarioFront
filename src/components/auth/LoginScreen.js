@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { Redirect, useHistory } from 'react-router';
+import React, {useState } from 'react'
 import { fetchSinToken } from '../../helpers/fetch';
 import { useForm } from '../../hooks/useForm';
 
-export const LoginScreen = ({setUid}) => {
+export const LoginScreen = ({setUid,setName}) => {
     // console.log(setUid)
-    const history = useHistory();
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(false);
     const [error, seterror] = useState({
@@ -33,19 +31,22 @@ export const LoginScreen = ({setUid}) => {
             const body = await respuesta.json();
             console.log(body)
             localStorage.setItem('token', body.token);
-            setUid(body.usuario.uid);
-            // setName(body.usuario.nombre);
+            localStorage.setItem('name', body.usuario.nombre);
+            localStorage.setItem('uid', body.usuario.uid);
             setLoading(false);
+            setUid(body.usuario.uid);
+            setName(body.usuario.uid);
+            // setName(body.usuario.nombre);
+            // history.push('/crear');
             // history.push('/crear');
         } catch (error) {
             seterror({
                 value: true,
                 msg: 'Hubo un error'
             })
-            console.log(error)
             setLoading(false);
+            console.log(error)
         }
-        // history.push('/crear');
     }
 
 
