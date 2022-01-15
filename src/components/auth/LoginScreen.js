@@ -82,6 +82,8 @@ export const LoginScreen = ({setUid,setName}) => {
             {
                 error.value && <span>{error.msg}</span>
             }
+
+            <button>Registrate</button>
         </>
     )
 }

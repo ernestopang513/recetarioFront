@@ -8,7 +8,7 @@ import {
     Link
   } from "react-router-dom";
 import { LoginScreen } from '../components/auth/LoginScreen';
-import { BuscarScreen } from '../components/BuscarScreen';
+import { BuscarScreen } from '../components/busquedaScreen/BuscarScreen';
 import { CrearReceta } from '../components/crearReceta/CrearReceta';
 import { HomeScreen } from '../components/home/HomeScreen';
 import { RecetaScreen } from '../components/recetasScreen/RecetaScreen';
@@ -97,8 +97,11 @@ export const AppRouter = () => {
                     <Route
                         exact
                         path = '/receta/:recetaId'
-                        component = { RecetaScreen}
-                    />
+                    >
+                        <RecetaScreen 
+                            uid = {!!uid}
+                        />                        
+                    </Route> 
 
                     {/* <Route
                         exact

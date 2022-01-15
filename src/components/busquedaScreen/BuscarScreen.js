@@ -6,7 +6,7 @@ export const BuscarScreen = () => {
     const [inputValue, setInputValue] = useState('');
     const [buscar, setBuscar] = useState(null)
     // const {data} = useFetchBusqueda(buscar)
-    console.log(buscar)
+    // console.log(buscar)
     const handleInputChange = ({target}) => {
         setInputValue( target.value);
     }

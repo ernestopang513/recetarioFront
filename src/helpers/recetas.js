@@ -42,7 +42,7 @@ const obtenerRecetaId = async(parametro= '') => {
     return res;
   } catch (error) {
     console.log(error);
-    return []
+    return null
   }
 };
 
@@ -64,9 +64,29 @@ const obtenerUsuarios = async(parametro = '') => {
   }
 }
 
+//Función para busqueda de usuarios
+const busquedaRecetas = async(parametro = '') => {
+  try{
+    const url = `http://localhost:8080/api/buscar/recetas/${parametro}`;
+    const response = await fetch(url, {
+      mode: 'cors'
+    });
+
+    const body = await response.json();
+    const res = [...body.results];
+    console.log(body);
+    return res;
+    
+  }catch (error){
+    console.log(error);
+    return [];
+  }
+}
+
 export{
   obtenerRecetas,
   obtenerUsuarios,
-  obtenerRecetaId
+  obtenerRecetaId,
+  busquedaRecetas
 }
 

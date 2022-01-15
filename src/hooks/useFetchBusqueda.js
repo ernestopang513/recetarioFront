@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { obtenerUsuarios } from "../helpers/recetas";
+import { busquedaRecetas, obtenerUsuarios } from "../helpers/recetas";
 
 
 
@@ -13,7 +13,7 @@ export const useFetchBusqueda = (parametro = '') => {
     });
 
     useEffect(() => {
-        obtenerUsuarios(parametro)
+        busquedaRecetas(parametro)
             .then(data => {
                 setBusqueda({
                     data,

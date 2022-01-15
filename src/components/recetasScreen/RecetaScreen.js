@@ -3,46 +3,36 @@ import { useParams } from 'react-router'
 import { useFetch2 } from '../../hooks/useFetch'
 import { RecetaItem } from './RecetaItem';
 
-export const RecetaScreen = () => {
+export const RecetaScreen = ({uid}) => {
 
+    
     const {recetaId} = useParams();
     const {data:receta,loading} = useFetch2(recetaId);
     
+    if(!uid){
+        return (
+            <div> 
+                <h2>Lo siento tienes que iniciar sesion</h2>
+            </div>
+        )
+    }
+
     return (
+
+
+
         <div>
 
             {loading && <p>Cargando ...</p>}
 
             {
-               receta && !loading && receta.length !== 0 ?
-                <RecetaItem {...receta} /> :
-                <span>Hubo un error</span>
-
-            }
-
-            
-            
-            
-            
-            {/* <h3>Receta por id</h3>
-
-            <h4>{data.nombre}</h4>
-
-            {
-                (ingredientes)?
-                ingredientes.map((ing,i) => (<p key = {i}>{ing}</p>))
-                :
-                <p>Cargando</p>
+               receta && !loading && receta.length !== 0 &&
+                <RecetaItem {...receta} /> 
             }
 
             {
-                (data.usuario.nombre)?
-                <p>{data.usuario.nombre}</p>
-                    :
-                <p>Cargando...</p>
-            } */}
-            
-            
+                !receta && <span>Hubo un error</span>
+            }
         </div>
     )
 }
