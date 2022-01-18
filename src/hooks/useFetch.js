@@ -71,6 +71,7 @@ export const useFetch = (endpoint, optional,data,method) => {
                 // console.log(prueba)
                 // // const res = [...body.recetas];
                 // const res = body
+                console.log(body)//Estoy es para ver que recibo
                 return body;
             } catch (error) {
                 console.log(error)

@@ -3,8 +3,8 @@ import { useFetch } from '../../hooks/useFetch'
 import { RecetaCard } from './RecetaCard';
 
 export const HomeScreen = () => {
-    const {data:{recetas} , loading,error} = useFetch('recetas', undefined, undefined, undefined);
-    // // console.log(data)
+    const {data:{recetas } , loading,error} = useFetch('recetas', undefined, undefined, undefined);
+    // console.log(data)
     // console.log(error)
     return (
         <div className = 'container'>
