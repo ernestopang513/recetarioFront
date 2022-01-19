@@ -13,6 +13,7 @@ import { BuscarScreen } from '../components/busquedaScreen/BuscarScreen';
 import { CrearReceta } from '../components/crearReceta/CrearReceta';
 import { HomeScreen } from '../components/home/HomeScreen';
 import { RecetaScreen } from '../components/recetasScreen/RecetaScreen';
+import { AuthRouter } from './AuthRouter';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 export const AppRouter = () => {
@@ -120,9 +121,9 @@ export const AppRouter = () => {
                        propiedades = {{setUid,setName}}
                     />
                      <PublicRoute
-                       path = '/auth/register' 
+                       path = '/auth' 
                        exact
-                       component = {RegisterScreen}
+                       component = {AuthRouter}
                        isAuthenticated = {!!uid}
                        propiedades = {{setUid,setName}}
                     />
