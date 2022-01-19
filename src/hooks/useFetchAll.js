@@ -6,7 +6,7 @@ import { fetchConToken } from "../helpers/fetch"
 
 
 
-export const useFetchAll = (endpoint, optional,data,method) => {
+export const useFetchAlll = (endpoint, optional,data,method) => {
 
     const [state, setState] = useState({
         data: {},

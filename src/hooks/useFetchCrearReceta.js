@@ -18,7 +18,7 @@ export const useFetchCrearReceta = () => {
             ...state,
             loading: true
         });
-        const separador = (variable ) => {
+            const separador = (variable ) => {
             const temporal = variable.trim().split(',');
             const arreglo = temporal.map(element => {
                 const valor = element.trim();

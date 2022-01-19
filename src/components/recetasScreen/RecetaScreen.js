@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router'
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { useFetch2 } from '../../hooks/useFetch'
 import { RecetaItem } from './RecetaItem';
 
@@ -11,9 +12,9 @@ export const RecetaScreen = ({uid}) => {
     
     if(!uid){
         return (
-            <div> 
-                <h2>Lo siento tienes que iniciar sesion</h2>
-            </div>
+            <> 
+                <Redirect to = '/auth/login'/>
+            </>
         )
     }
 

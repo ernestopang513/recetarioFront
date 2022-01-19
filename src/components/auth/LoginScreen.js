@@ -1,4 +1,5 @@
 import React, {useState } from 'react'
+import { Link } from 'react-router-dom';
 import { fetchSinToken } from '../../helpers/fetch';
 import { useForm } from '../../hooks/useForm';
 
@@ -83,7 +84,9 @@ export const LoginScreen = ({setUid,setName}) => {
                 error.value && <span>{error.msg}</span>
             }
 
-            <button>Registrate</button>
+            <Link
+                to = './register'
+            >Registrate</Link>
         </>
     )
 }

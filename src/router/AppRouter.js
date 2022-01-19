@@ -8,6 +8,7 @@ import {
     Link
   } from "react-router-dom";
 import { LoginScreen } from '../components/auth/LoginScreen';
+import { RegisterScreen } from '../components/auth/RegisterScreen';
 import { BuscarScreen } from '../components/busquedaScreen/BuscarScreen';
 import { CrearReceta } from '../components/crearReceta/CrearReceta';
 import { HomeScreen } from '../components/home/HomeScreen';
@@ -118,6 +119,13 @@ export const AppRouter = () => {
                        isAuthenticated = {!!uid}
                        propiedades = {{setUid,setName}}
                     />
+                     <PublicRoute
+                       path = '/auth/register' 
+                       exact
+                       component = {RegisterScreen}
+                       isAuthenticated = {!!uid}
+                       propiedades = {{setUid,setName}}
+                    />
                     <PrivateRoute
                        path = '/crear' 
                        exact
@@ -130,8 +138,6 @@ export const AppRouter = () => {
 
                  </Switch>
             </div>
-
-            
         </Router>
     )
 }
