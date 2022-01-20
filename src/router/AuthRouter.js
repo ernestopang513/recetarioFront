@@ -6,14 +6,17 @@ import { RegisterScreen } from '../components/auth/RegisterScreen';
 
 export const AuthRouter = ({setUid,setName}) => {
   return( 
-    <>
+    <div>
         <Switch>
             <Route
-                exact
-                path = '/auth/login'
-                component= {LoginScreen}
-                props = {{setUid,setName}}
-            />
+              exact
+              path= '/auth/login'
+            >
+              <LoginScreen
+                setUid={setUid}
+                setName={setName}
+              />
+            </Route>
 
             <Route
                 exact
@@ -23,6 +26,6 @@ export const AuthRouter = ({setUid,setName}) => {
 
             <Redirect to = '/auth/login'/>
         </Switch>
-    </>
+    </div>
   )
 };

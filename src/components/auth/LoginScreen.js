@@ -4,7 +4,12 @@ import { fetchSinToken } from '../../helpers/fetch';
 import { useForm } from '../../hooks/useForm';
 
 export const LoginScreen = ({setUid,setName}) => {
-    // console.log(setUid)
+
+    // const setUid = props.setUid;
+    // const setName = props.setName;
+    
+    
+    console.log(setUid)
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(false);
     const [error, seterror] = useState({

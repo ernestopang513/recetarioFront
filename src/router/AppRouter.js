@@ -15,7 +15,9 @@ import { HomeScreen } from '../components/home/HomeScreen';
 import { RecetaScreen } from '../components/recetasScreen/RecetaScreen';
 import { AuthRouter } from './AuthRouter';
 import { PrivateRoute } from './PrivateRoute';
+import { PrivateRouter } from './PrivateRouter';
 import { PublicRoute } from './PublicRoute';
+
 export const AppRouter = () => {
     const [uid, setUid] = useState('');
     const [name, setName] = useState('');
@@ -58,7 +60,7 @@ export const AppRouter = () => {
                             <Link to = '/buscar'>Buscar</Link>
                         </li>
                         <li className = 'marginBottomMrem'>
-                            <Link to = '/crear'>Crear</Link>
+                            <Link to = '/private/crear'>Crear</Link>
                         </li >
                         <li className = 'marginBottomMrem'>
                             <Link to = '/gestionar'>Gestionar</Link>
@@ -96,14 +98,14 @@ export const AppRouter = () => {
                         component = { () => (<p>Ruta para gestionar las recetas</p>)}
                     />
                     
-                    <Route
+                    {/* <Route
                         exact
                         path = '/receta/:recetaId'
                     >
                         <RecetaScreen 
                             uid = {!!uid}
                         />                        
-                    </Route> 
+                    </Route>  */}
 
                     {/* <Route
                         exact
@@ -113,29 +115,31 @@ export const AppRouter = () => {
                         <LoginScreen setUid = {setUid}/>
                     </Route> */}
                     
-                    <PublicRoute
+                    {/* <PublicRoute
                        path = '/auth/login' 
                        exact
                        component = {LoginScreen}
                        isAuthenticated = {!!uid}
                        propiedades = {{setUid,setName}}
-                    />
+                    /> */}
+
                      <PublicRoute
                        path = '/auth' 
-                       exact
                        component = {AuthRouter}
                        isAuthenticated = {!!uid}
                        propiedades = {{setUid,setName}}
                     />
+                    
                     <PrivateRoute
-                       path = '/crear' 
-                       exact
-                       component = {CrearReceta}
+                       path = '/private' 
+                       component = {PrivateRouter}
                        isAuthenticated = {!!uid}
                     />
-                    <Redirect
-                        to = '/'
-                    />
+
+
+                    {/* <Redirect
+                       to = '/'
+                    /> */}
 
                  </Switch>
             </div>

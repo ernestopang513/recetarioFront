@@ -13,7 +13,7 @@ export const RecetaCard = ({receta}) => {
             
             <Link
                 className = 'cardReceta noStyle displayBlock'
-                to = {`./receta/${receta._id}`}
+                to = {`./private/receta/${receta._id}`}
             >{receta.nombre}</Link>
         // </div>
     )

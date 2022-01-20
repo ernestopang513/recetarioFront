@@ -10,14 +10,14 @@ export const RecetaScreen = ({uid}) => {
     const {recetaId} = useParams();
     const {data:receta,loading} = useFetch2(recetaId);
     
-    if(!uid){
-        return (
-            <> 
-                <Redirect to = '/auth/login'/>
-            </>
-        )
-    }
-
+    // if(!uid){
+    //     return (
+    //         <> 
+    //             <Redirect to = '/auth/login'/>
+    //         </>
+    //     )
+    // }
+    
     return (
 
 
