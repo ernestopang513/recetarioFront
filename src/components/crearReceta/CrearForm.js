@@ -14,7 +14,7 @@ export const CrearForm = ({postFuntion,loading}) => {
             return;
         }
         postFuntion('recetas', undefined, formValues,'POST');
-        resetValues();
+        // resetValues();
     }
     return (
         <form className= "formContainer container" onSubmit = {handleSubmit}>

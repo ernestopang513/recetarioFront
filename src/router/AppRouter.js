@@ -63,7 +63,7 @@ export const AppRouter = () => {
                             <Link to = '/private/crear'>Crear</Link>
                         </li >
                         <li className = 'marginBottomMrem'>
-                            <Link to = '/gestionar'>Gestionar</Link>
+                            <Link to = '/private/gestionar'>Gestionar</Link>
                         </li>
                         {/* <li className = 'marginBottomMrem'>
                             <Link to = '/auth/login'>Login</Link>
@@ -92,11 +92,11 @@ export const AppRouter = () => {
                         path = '/crear'
                         component = { CrearReceta}
                     /> */}
-                    <Route
+                    {/* <Route
                         exact
                         path = '/gestionar'
                         component = { () => (<p>Ruta para gestionar las recetas</p>)}
-                    />
+                    /> */}
                     
                     {/* <Route
                         exact

@@ -22,6 +22,12 @@ export const PrivateRouter = () => {
                     <RecetaScreen/>
                 </Route>
 
+                <Route
+                        exact
+                        path = '/private/gestionar'
+                        component = { () => (<p>Ruta para gestionar las recetas</p>)}
+                    />
+
                 <Redirect to = '/'/>
 
             </Switch>
