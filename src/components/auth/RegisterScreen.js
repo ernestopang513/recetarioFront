@@ -1,30 +1,30 @@
 import React from 'react'
 import { useFetchCreateUsuario } from '../../hooks/useFetchCreateUsuario';
-import { useForm } from '../../hooks/useForm';
+import { RegisterScreenForm } from './RegisterScreenForm';
 
 export const RegisterScreen = () => {
     
     const [{data, loading, error, msg}, postFuntion] = useFetchCreateUsuario()
     
-    const [formValues,handleInputChange, resetValues] = useForm()            
-    const {correo = '', password = '', nombre = '', rol = 'USER_ROLE'} = formValues;
+    // const [formValues,handleInputChange, resetValues] = useForm()            
+    // const {correo = '', password = '', nombre = ''} = formValues;
 
     
-    const handleSubmit = async(e) => {
+    // const handleSubmit = async(e) => {
 
-        e.preventDefault();
+    //     e.preventDefault();
         
-        // console.log(formValues);
-        if(correo.replace(/\s+/g, '').length < 4 || password.replace(/\s+/g, '').length < 4 || nombre.replace(/\s+/g, '').length < 4 ){
-            alert('nop');
-            return;
-        }
+    //     // console.log(formValues);
+    //     if(correo.replace(/\s+/g, '').length < 4 || password.replace(/\s+/g, '').length < 4 || nombre.replace(/\s+/g, '').length < 4 ){
+    //         alert('nop');
+    //         return;
+    //     }
 
-        postFuntion('usuarios', undefined, formValues, 'POST');
-    }
+    //     postFuntion('usuarios', undefined, formValues, 'POST');
+    // }
     return (
         <>
-            <h3>Register screen</h3>
+            {/* <h3>Register screen</h3>
             <form className='marginTop1rem' onSubmit={handleSubmit}>
                 <label className='displayBlock'>Nombre</label>
                 <input
@@ -55,7 +55,9 @@ export const RegisterScreen = () => {
                     type='submit'
                     value='Registrame'
                 />
-            </form>
+            </form> */}
+
+            <RegisterScreenForm postFuntion = {postFuntion} loading = {loading}  />
             {
                 loading && <span>Cargando...</span>
             }

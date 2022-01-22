@@ -5,12 +5,23 @@ import { useState } from "react";
 export const useForm = (initialState = {}) => {
     const [values, setValues] = useState(initialState);
 
-    function resetValues() {
+    // function resetValues() {
+    //     setValues({
+    //         nombre: '',
+    //         ingredientes: '',
+    //         procedimiento: ''
+    //     });
+    // }
+    function resetValues(campos){
+
+        const newCampos = campos;
+        for(let campo in newCampos){
+            newCampos[campo] = '';
+        }
         setValues({
-            nombre: '',
-            ingredientes: '',
-            procedimiento: ''
-        });
+            ...newCampos
+        })
+        console.log(newCampos);
     }
 
 
