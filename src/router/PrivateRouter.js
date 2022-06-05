@@ -2,9 +2,10 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { RegisterScreen } from '../components/auth/RegisterScreen';
 import { CrearReceta } from '../components/crearReceta/CrearReceta';
+import { MisRecetasScreen } from '../components/misRecetasScreen/MisRecetasScreen';
 import { RecetaScreen } from '../components/recetasScreen/RecetaScreen';
 
-export const PrivateRouter = () => {
+export const PrivateRouter = ({uid}) => {
     return (
         <div>
             <Switch>
@@ -25,8 +26,11 @@ export const PrivateRouter = () => {
                 <Route
                         exact
                         path = '/private/gestionar'
-                        component = { () => (<p>Ruta para gestionar las recetas</p>)}
-                    />
+                    >
+                        <MisRecetasScreen
+                            uid = {uid}
+                        />
+                </Route>
 
                 <Redirect to = '/'/>
 

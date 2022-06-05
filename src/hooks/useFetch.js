@@ -114,6 +114,41 @@ export const useFetch2 = (parametro = '') => {
         data: [],
         loading: true
     });
+    useEffect(() => {
+        let controller = new AbortController();
+        const signal = controller.signal;
+        let isActive = true;
+        // console.log(signal)    
+        obtenerRecetaId(parametro, signal)
+        .then(data => {
+            if (isActive){
+                setState({
+                    data,
+                    loading: false
+                });
+
+            }
+            // controller = null;
+        })
+        
+        return () => {
+            isActive = false;
+            // console.log(!!controller);
+            controller.abort();
+            // console.log('fetch abort');
+            // console.log(signal)
+        };
+    }, []);
+
+    return state
+}
+
+export const useFetch3 = (parametro = '') => {
+
+    const [state, setState] = useState({
+        data: [],
+        loading: true
+    });
 
 
     useEffect(() => {
@@ -124,7 +159,6 @@ export const useFetch2 = (parametro = '') => {
                     loading: false
                 });
             })
-        
     }, [parametro]);
 
     return state

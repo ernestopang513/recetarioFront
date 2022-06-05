@@ -79,6 +79,7 @@ export const AppRouter = () => {
                         exact
                         path = '/'
                         component = {HomeScreen}
+                    
                     />
                     
                     <Route
@@ -134,6 +135,8 @@ export const AppRouter = () => {
                        path = '/private' 
                        component = {PrivateRouter}
                        isAuthenticated = {!!uid}
+                       propiedades = {{uid}}
+                        
                     />
 
 

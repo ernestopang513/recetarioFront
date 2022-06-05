@@ -46,7 +46,8 @@ const fetchConToken = async(endpoint, optional = '', data, method = 'GET') => {
                 }
             });
             const body = await respuesta.json();
-            return {body}
+            console.log(body);
+            return body;
             
         } catch (error) {
             console.log(error);
@@ -63,7 +64,7 @@ const fetchConToken = async(endpoint, optional = '', data, method = 'GET') => {
             });
             const body = await respuesta.json();
             console.log(body);
-            return body.receta;
+            return body;
             
         } catch (error) {
             console.log('hola soy un error',error)

@@ -21,10 +21,11 @@ const obtenerRecetas = async() => {
     return null
   }
 };
-const obtenerRecetaId = async(parametro= '') => {
+const obtenerRecetaId = async(parametro= '', signal) => {
   const token = localStorage.getItem('token') || '';
   try {
     const response = await fetch(`http://localhost:8080/api/recetas/${parametro}`,{
+      signal,
       mode: 'cors',
       headers: {
         'x-token': token
@@ -82,6 +83,7 @@ const busquedaRecetas = async(parametro = '') => {
     return [];
   }
 }
+
 
 export{
   obtenerRecetas,
