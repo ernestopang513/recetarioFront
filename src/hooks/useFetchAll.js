@@ -16,29 +16,24 @@ export const useFetchAlll = (endpoint, optional,data,method) => {
     })
     
     useEffect(() => {
-        console.log('montado')
-        // let controller = new AbortController();
-        // const signal = controller.signal;
-        // let isActive = true;
-        fetchConToken(endpoint, optional,data,method)
+        let controller = new AbortController();
+        const signal = controller.signal;
+        let isActive = true;
+        fetchConToken(endpoint, optional,data,method,signal)
             .then(data => {
-                (data)?
-                setState({
-                    data,
-                    loading: false,
-                    error: false,
-                    msg: ''
-                })
-                :
-                setState({
-                    data,
-                    loading: false,
-                    error: true,
-                    msg: 'Algo salio mal'
-                })
+                if(isActive){
+                    setState({
+                        data,
+                        loading: false,
+                        error: false,
+                        msg: ''
+                    })
+                }
             })
+
        return () => {
-           console.log('desmontado')
+           isActive = false;
+           controller.abort();
        }
     }, [endpoint,optional,data,method])
 

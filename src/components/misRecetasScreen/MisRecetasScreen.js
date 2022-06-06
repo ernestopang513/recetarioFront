@@ -14,7 +14,7 @@ export const MisRecetasScreen = ({uid}) => {
   //   }
   // }, [])
   
-  console.log(data)
+  
   return (
 
       <div className='container' >

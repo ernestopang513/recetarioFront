@@ -31,7 +31,7 @@ const fetchSinToken = (endpoint, optional = '', data, method = 'GET') => {
         });
     }
 }
-const fetchConToken = async(endpoint, optional = '', data, method = 'GET') => {
+const fetchConToken = async(endpoint, optional = '', data, method = 'GET',signal = null) => {
 
     const url = `http://localhost:8080/api/${endpoint}/${optional}`;
     const token = localStorage.getItem('token');
@@ -40,6 +40,7 @@ const fetchConToken = async(endpoint, optional = '', data, method = 'GET') => {
     if(method === 'GET'){
         try {
             const respuesta = await fetch(url,{
+                signal,
                 headers: {
                     'x-token': token,
                     'content-type': 'application/json'
@@ -56,6 +57,7 @@ const fetchConToken = async(endpoint, optional = '', data, method = 'GET') => {
         try {
             const respuesta = await fetch(url,{
                 method,
+                signal,
                 headers:{
                     'x-token': token,
                     'content-type': 'application/json'
