@@ -1,9 +1,11 @@
 import React from 'react';
-import { useEffect } from 'react/cjs/react.development';
+import { Link } from 'react-router-dom';
+// import { useEffect } from 'react/cjs/react.development';
 
 import { useFetchAlll } from '../../hooks/useFetchAll';
-export const MisRecetasScreen = ({uid}) => {
+import { RecetaCard } from '../home/RecetaCard';
 
+export const MisRecetasScreen = ({uid}) => {
   const {data, loading, error,msg} = useFetchAlll ('usuarios', uid, undefined, undefined); 
   
   // useEffect(() => {
@@ -29,16 +31,24 @@ export const MisRecetasScreen = ({uid}) => {
       {
         (data)?
       data.usuario.recetas.map(receta => {  
-        return <p key = {receta._id}>{receta.nombre}</p>
+        return  <Link
+              key= {receta._id}
+              className = 'cardReceta noStyle displayBlock'
+              to = {`./gestionar/receta/${receta._id}`}
+              >{receta.nombre}</Link>
       })
       :
         <p>{msg}</p>
       }
+      
       {/* {
-        (data)?
-        console.log('data')
-        :
-        console.log('no data')
+        data ? 
+          data.usuario.recetas.map(receta => (<RecetaCard
+              key = {receta._id}
+              receta = {receta}
+              />))
+              :
+                (<p>{error.msg} </p>)
       } */}
 
       </div>
