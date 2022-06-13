@@ -7,6 +7,7 @@ import { MisRecetasScreen } from '../components/misRecetasScreen/MisRecetasScree
 import { RecetaScreen } from '../components/recetasScreen/RecetaScreen';
 
 export const PrivateRouter = ({uid}) => {
+    console.log('paso por privateRouter')
     return (
         <div>
             <Switch>

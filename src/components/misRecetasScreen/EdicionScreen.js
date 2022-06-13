@@ -16,12 +16,22 @@ export const EdicionScreen = () => {
   
 
   const {nombre=receta.nombre,ingredientes=receta.ingredientes,procedimiento=receta.procedimiento} = formValues;  
-                                   
+  const {nombreInicial,ingredientesInicial,procedimientoInicial} = formValues;
+
   
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    
+    // console.log(nombreInicial);
+    // console.log(ingredientesInicial);
+    // console.log(procedimientoInicial);
+    // console.log(formValues)
+
+    if(Object.keys(formValues).length === 0){
+      alert('Debes editar la receta para modificarla.')
+      return  
+    }
+
     if(nombre.replace(/\s+/g, '').length < 4 || ingredientes.toString().replace(/\s+/g, '').length < 4 || procedimiento.toString().replace(/\s+/g, '').length < 4){
         alert('nop');
         return;
@@ -31,7 +41,7 @@ export const EdicionScreen = () => {
     // resetValues();
   }
   // console.log(nombre)
-  console.log(formValues)
+  // console.log(formValues)
   // try{
   //   let aux = ingredientes.toString();
   //   console.log(aux)

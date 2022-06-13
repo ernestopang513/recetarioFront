@@ -82,12 +82,19 @@ export const AppRouter = () => {
                     
                     />
                     
-                    <Route
+                    {/* <Route
                         exact
                         path = '/buscar'
                         component = {BuscarScreen}
-                    />
+                    /> */}
 
+                    <Route
+                        exact
+                        path='/buscar'
+                        
+                    >
+                        <BuscarScreen uid = {uid}/>
+                    </Route>
                     {/* <Route
                         exact
                         path = '/crear'
@@ -140,9 +147,9 @@ export const AppRouter = () => {
                     />
 
 
-                    {/* <Redirect
+                    <Redirect
                        to = '/'
-                    /> */}
+                    />
 
                  </Switch>
             </div>

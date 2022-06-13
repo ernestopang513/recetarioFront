@@ -9,6 +9,7 @@ export const PublicRoute = ({
     propiedades,
     ...rest
 }) => {
+    console.log('paso por publicRoute')
     return (
         <Route { ...rest }
             component={ (props) => (
@@ -18,4 +19,16 @@ export const PublicRoute = ({
             )}
         />
     )
+    // return (
+    //     <Route { ...rest }
+    //         component={ (props) => {
+    //             if( !isAuthenticated ){
+
+    //                 ( <Component { ...props } {...propiedades}/> )
+    //             }
+    //                 // ? 
+    //                 // : ( <Redirect to="/" /> )
+    //             }}
+    //     />
+    // )
 }

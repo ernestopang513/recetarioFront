@@ -9,7 +9,7 @@ export const PrivateRoute = ({
     propiedades,
     ...rest
 }) => {
-
+    console.log('paso por privateROute')
     return (
         <Route { ...rest }
             component={ (props) => (
