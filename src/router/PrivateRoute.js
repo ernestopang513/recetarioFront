@@ -9,13 +9,13 @@ export const PrivateRoute = ({
     propiedades,
     ...rest
 }) => {
-    console.log('paso por privateROute')
+    console.log('paso por privateRoute')
     return (
         <Route { ...rest }
             component={ (props) => (
                 ( isAuthenticated )
                     ? ( <Component { ...props } {...propiedades} /> )
-                    : ( <Redirect to="/auth" /> )
+                    : ( <Redirect to="/auth/login" /> )
             )}
         />
     )

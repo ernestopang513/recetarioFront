@@ -8,18 +8,13 @@ import {
     Redirect,
     Link,
   } from "react-router-dom";
-import { LoginScreen } from '../components/auth/LoginScreen';
-import { RegisterScreen } from '../components/auth/RegisterScreen';
 import { BuscarScreen } from '../components/busquedaScreen/BuscarScreen';
-import { CrearReceta } from '../components/crearReceta/CrearReceta';
 import { HomeScreen } from '../components/home/HomeScreen';
-import { RecetaScreen } from '../components/recetasScreen/RecetaScreen';
 import { Autentificando } from './Autentificando';
 import { AuthRouter } from './AuthRouter';
 import { PrivateRoute } from './PrivateRoute';
 import { PrivateRouter } from './PrivateRouter';
 import { PublicRoute } from './PublicRoute';
-import { RutasPrueba } from './RutasPrueba';
 
 export const AppRouter = () => {
     const [uid, setUid] = useState('');
@@ -30,13 +25,18 @@ export const AppRouter = () => {
         // const token = localStorage.getItem('token') || '';
         const name1 = localStorage.getItem('name') || '';
         const uid1 = localStorage.getItem('uid') || '';
-
+        if(!(!!uid1)){
+            setWait(false);
+            console.log(uid1);
+            console.log('if')
+            return
+        }
         setUid(uid1);
         setName(name1);
         setTimeout(() => {
             setWait(false);
-            
-        }, 2000);
+            console.log('setWait')
+        }, 500);
         // setWait(false);
 
     }, []);
@@ -139,8 +139,30 @@ export const AppRouter = () => {
                        propiedades = {{setUid,setName}}
                     /> */}
 
-
+                    <PublicRoute
+                       path = '/auth'
+                       component = {AuthRouter}
+                       isAuthenticated = {!!uid}
+                       propiedades = {{setUid,setName}}
+                    />
                     {
+                        !wait ? 
+
+                        <PrivateRoute
+                       path = '/private'
+                       component = {PrivateRouter}
+                       isAuthenticated = {!!uid}
+                       propiedades = {{uid}}
+
+                    />
+                        
+                        :
+                           <Route
+                            path='/private'
+                            component ={Autentificando}
+                           />
+                    }
+                    {/* {
                         !wait ? 
 
                         <RutasPrueba
@@ -156,7 +178,7 @@ export const AppRouter = () => {
                             path='/private'
                             component ={Autentificando}
                            />
-                    }
+                    } */}
 
                      {/* <PublicRoute
                        path = '/auth'

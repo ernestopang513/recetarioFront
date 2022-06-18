@@ -25,7 +25,7 @@ export const AuthRouter = ({setUid,setName}) => {
                 component = {RegisterScreen}
             />
 
-            <Redirect to = '/auth/login'/>
+            <Redirect to = '/'/>
         </Switch>
     </div>
   )
