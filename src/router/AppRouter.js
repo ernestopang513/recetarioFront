@@ -14,39 +14,43 @@ import { BuscarScreen } from '../components/busquedaScreen/BuscarScreen';
 import { CrearReceta } from '../components/crearReceta/CrearReceta';
 import { HomeScreen } from '../components/home/HomeScreen';
 import { RecetaScreen } from '../components/recetasScreen/RecetaScreen';
+import { Autentificando } from './Autentificando';
 import { AuthRouter } from './AuthRouter';
 import { PrivateRoute } from './PrivateRoute';
 import { PrivateRouter } from './PrivateRouter';
 import { PublicRoute } from './PublicRoute';
+import { RutasPrueba } from './RutasPrueba';
 
 export const AppRouter = () => {
     const [uid, setUid] = useState('');
     const [name, setName] = useState('');
     const [wait, setWait] = useState(true);
     useEffect(() => {
-        
+
         // const token = localStorage.getItem('token') || '';
         const name1 = localStorage.getItem('name') || '';
         const uid1 = localStorage.getItem('uid') || '';
 
         setUid(uid1);
         setName(name1);
-        
-        setWait(false);
+        setTimeout(() => {
+            setWait(false);
+            
+        }, 2000);
+        // setWait(false);
 
     }, []);
     // console.log(!!uid)
     // console.log(uid)
     // console.log(!!name)
-    return (!wait) ?    
-     (
+    return (
         <Router>
             <header className = 'marginTop1rem' >
                 <h1 className = 'marginBottom1rem' >Recetario familiar</h1>
-                
+
                 {
                     uid     &&
-                    <button 
+                    <button
                         className = 'centralContainer'
                         onClick = {() => {
                             localStorage.clear();
@@ -83,9 +87,9 @@ export const AppRouter = () => {
                         exact
                         path = '/'
                         component = {HomeScreen}
-                    
+
                     />
-                    
+
                     {/* <Route
                         exact
                         path = '/buscar'
@@ -95,7 +99,7 @@ export const AppRouter = () => {
                     <Route
                         exact
                         path='/buscar'
-                        
+
                     >
                         <BuscarScreen uid = {uid}/>
                     </Route>
@@ -109,46 +113,65 @@ export const AppRouter = () => {
                         path = '/gestionar'
                         component = { () => (<p>Ruta para gestionar las recetas</p>)}
                     /> */}
-                    
+
                     {/* <Route
                         exact
                         path = '/receta/:recetaId'
                     >
-                        <RecetaScreen 
+                        <RecetaScreen
                             uid = {!!uid}
-                        />                        
+                        />
                     </Route>  */}
 
                     {/* <Route
                         exact
                         path = '/login'
-            
+
                     >
                         <LoginScreen setUid = {setUid}/>
                     </Route> */}
-                    
+
                     {/* <PublicRoute
-                       path = '/auth/login' 
+                       path = '/auth/login'
                        exact
                        component = {LoginScreen}
                        isAuthenticated = {!!uid}
                        propiedades = {{setUid,setName}}
                     /> */}
 
-                     <PublicRoute
-                       path = '/auth' 
+
+                    {
+                        !wait ? 
+
+                        <RutasPrueba
+                            isAuthenticadet = {!!uid}
+                            // propiedades = {{setUid,setName,uid}}
+                            setuid = {setUid}
+                            setName = {setName}
+                            uid= {uid}
+    
+                        />
+                        :
+                           <Route
+                            path='/private'
+                            component ={Autentificando}
+                           />
+                    }
+
+                     {/* <PublicRoute
+                       path = '/auth'
                        component = {AuthRouter}
                        isAuthenticated = {!!uid}
                        propiedades = {{setUid,setName}}
                     />
-                    
+
                     <PrivateRoute
-                       path = '/private' 
+                       path = '/private'
                        component = {PrivateRouter}
                        isAuthenticated = {!!uid}
                        propiedades = {{uid}}
-                        
-                    />
+
+                    /> */}
 
 
                     <Redirect
@@ -159,6 +182,5 @@ export const AppRouter = () => {
             </div>
         </Router>
     )
-    :
-    (<p>espera...</p>)
+
 }
