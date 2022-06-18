@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 // import '../App.css';
 import {
-    BrowserRouter as Router,
+    // BrowserRouter as Router,
+    HashRouter as Router,
     Switch,
     Route,
     Redirect,
-    Link
+    Link,
   } from "react-router-dom";
 import { LoginScreen } from '../components/auth/LoginScreen';
 import { RegisterScreen } from '../components/auth/RegisterScreen';
@@ -21,7 +22,7 @@ import { PublicRoute } from './PublicRoute';
 export const AppRouter = () => {
     const [uid, setUid] = useState('');
     const [name, setName] = useState('');
-
+    const [wait, setWait] = useState(true);
     useEffect(() => {
         
         // const token = localStorage.getItem('token') || '';
@@ -30,12 +31,15 @@ export const AppRouter = () => {
 
         setUid(uid1);
         setName(name1);
+        
+        setWait(false);
 
     }, []);
     // console.log(!!uid)
     // console.log(uid)
-    // console.log(!!name)    
-    return (
+    // console.log(!!name)
+    return (!wait) ?    
+     (
         <Router>
             <header className = 'marginTop1rem' >
                 <h1 className = 'marginBottom1rem' >Recetario familiar</h1>
@@ -155,4 +159,6 @@ export const AppRouter = () => {
             </div>
         </Router>
     )
+    :
+    (<p>espera...</p>)
 }
