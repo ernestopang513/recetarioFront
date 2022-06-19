@@ -24,7 +24,8 @@ const obtenerRecetas = async() => {
 const obtenerRecetaId = async(parametro= '', signal) => {
   const token = localStorage.getItem('token') || '';
   try {
-    const response = await fetch(`http://localhost:8080/api/recetas/${parametro}`,{
+    // const response = await fetch(`http://localhost:8080/api/recetas/${parametro}`,{
+    const response = await fetch(`https://recetario-pang.herokuapp.com/api/recetas/${parametro}`,{
       signal,
       mode: 'cors',
       headers: {
@@ -49,7 +50,8 @@ const obtenerRecetaId = async(parametro= '', signal) => {
 
 const obtenerUsuarios = async(parametro = '') => {
   try {
-    const url = `http://localhost:8080/api/buscar/usuarios/${parametro}`;
+    // const url = `http://localhost:8080/api/buscar/usuarios/${parametro}`;
+    const url = `https://recetario-pang.herokuapp.com/api/buscar/usuarios/${parametro}`;
     const response = await fetch(url,{
       mode: 'cors'
     });
@@ -68,7 +70,8 @@ const obtenerUsuarios = async(parametro = '') => {
 //Función para busqueda de usuarios
 const busquedaRecetas = async(parametro = '') => {
   try{
-    const url = `http://localhost:8080/api/buscar/recetas/${parametro}`;
+    // const url = `http://localhost:8080/api/buscar/recetas/${parametro}`;
+    const url = `https://recetario-pang.herokuapp.com/api/buscar/recetas/${parametro}`;
     const response = await fetch(url, {
       mode: 'cors'
     });
