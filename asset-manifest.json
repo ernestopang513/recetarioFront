@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/recetarioFront/static/css/main.795913e5.chunk.css",
+    "main.js": "/recetarioFront/static/js/main.a7882a5c.chunk.js",
+    "main.js.map": "/recetarioFront/static/js/main.a7882a5c.chunk.js.map",
+    "runtime-main.js": "/recetarioFront/static/js/runtime-main.5be49a86.js",
+    "runtime-main.js.map": "/recetarioFront/static/js/runtime-main.5be49a86.js.map",
+    "static/js/2.b1cc0a9c.chunk.js": "/recetarioFront/static/js/2.b1cc0a9c.chunk.js",
+    "static/js/2.b1cc0a9c.chunk.js.map": "/recetarioFront/static/js/2.b1cc0a9c.chunk.js.map",
+    "index.html": "/recetarioFront/index.html",
+    "static/css/main.795913e5.chunk.css.map": "/recetarioFront/static/css/main.795913e5.chunk.css.map",
+    "static/js/2.b1cc0a9c.chunk.js.LICENSE.txt": "/recetarioFront/static/js/2.b1cc0a9c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5be49a86.js",
+    "static/js/2.b1cc0a9c.chunk.js",
+    "static/css/main.795913e5.chunk.css",
+    "static/js/main.a7882a5c.chunk.js"
+  ]
+}
