@@ -17,11 +17,17 @@
 
 const fetchSinToken = (endpoint, optional = '', data, method = 'GET') => {
 
-    // const url = `http://localhost:8080/api/${endpoint}/${optional}`;
-    const url = `https://recetario-pang.herokuapp.com/api/${endpoint}/${optional}`;
+    const url = `http://localhost:8080/api/${endpoint}/${optional}`;
+    // const url = `https://recetario-pang.herokuapp.com/api/${endpoint}/${optional}`;
 
     if(method === 'GET'){
-        return fetch(url);
+        console.log('llega al helper')
+        return fetch(url,{
+            mode: 'cors',
+            headers:{
+                'content-type': 'application/json'
+            },
+        });
     }else{
         return fetch(url,{
             method,
@@ -35,8 +41,8 @@ const fetchSinToken = (endpoint, optional = '', data, method = 'GET') => {
 }
 const fetchConToken = async(endpoint, optional = '', data, method = 'GET',signal = null) => {
 
-    // const url = `http://localhost:8080/api/${endpoint}/${optional}`;
-    const url = `https://recetario-pang.herokuapp.com/api/${endpoint}/${optional}`;
+    const url = `http://localhost:8080/api/${endpoint}/${optional}`;
+    // const url = `https://recetario-pang.herokuapp.com/api/${endpoint}/${optional}`;
     const token = localStorage.getItem('token');
 
 
