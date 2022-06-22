@@ -23,11 +23,12 @@ export const LoginScreen = ({setUid,setName}) => {
     const handleSubmit = async(e) => {
         e.preventDefault();
         if(correo.replace(/\s+/g, '').length < 4 || password.replace(/\s+/g, '').length < 4 ){
-            alert('nop');
-            return;
-        }
-        setLoading(true);
-
+                alert('nop');
+                return;
+            }
+            setLoading(true);
+            
+            console.log('depurar')
         try {
             const respuesta = await fetchSinToken('auth', 'login', formValues, 'POST');
             const body = await respuesta.json();
@@ -38,6 +39,7 @@ export const LoginScreen = ({setUid,setName}) => {
             setLoading(false);
             setUid(body.usuario.uid);
             setName(body.usuario.uid);
+            ////////////////////////////////////////////////
             // setName(body.usuario.nombre);
             // history.push('/crear');
             // history.push('/crear');
