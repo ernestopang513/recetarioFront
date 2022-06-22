@@ -29,7 +29,7 @@ export const MisRecetasScreen = ({uid}) => {
       { data && <pre>{JSON.stringify(data)}</pre>}
 
       {
-        (data)?
+        (data)&&
       data.usuario.recetas.map(receta => {  
         return  <Link
               key= {receta._id}
@@ -37,8 +37,10 @@ export const MisRecetasScreen = ({uid}) => {
               to = {`./gestionar/receta/${receta._id}`}
               >{receta.nombre}</Link>
       })
-      :
-        <p>{msg}</p>
+      }
+
+      {
+        error && <p>{msg}</p>
       }
       
       {/* {
