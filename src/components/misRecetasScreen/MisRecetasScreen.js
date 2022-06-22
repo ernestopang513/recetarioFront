@@ -8,13 +8,6 @@ import { RecetaCard } from '../home/RecetaCard';
 export const MisRecetasScreen = ({uid}) => {
   const {data, loading, error,msg} = useFetchAlll ('usuarios', uid, undefined, undefined); 
   
-  // useEffect(() => {
-  //   console.log('montado')
-  
-  //   return () => {
-  //     console.log('desmontado')
-  //   }
-  // }, [])
   
   
   return (
