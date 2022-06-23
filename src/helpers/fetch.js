@@ -16,6 +16,7 @@
 
 
 const fetchSinToken = (endpoint, optional = '', data, method = 'GET') => {
+    // const url = `http://localhost:8080/api/${endpoint}/${optional}`;
     const url = `http://localhost:8080/api/${endpoint}/${optional}`;
     // const url = `https://recetario-pang.herokuapp.com/api/${endpoint}/${optional}`;
 
