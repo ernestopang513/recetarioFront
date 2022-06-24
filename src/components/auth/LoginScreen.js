@@ -59,7 +59,7 @@ export const LoginScreen = ({setUid,setName}) => {
         <div>
 
             <h3>Login screen</h3>
-            <form onSubmit = {handleSubmit}>
+            <form onSubmit={handleSubmit} >
                 <label>Correo</label>        
                 
                 <input
@@ -69,7 +69,7 @@ export const LoginScreen = ({setUid,setName}) => {
                     onChange = {handleInputChange}
                 />
                 
-                <label>Contraseña</label>        
+                <label>Contraseñaaaaaaa222</label>        
 
                 <input
                     name = 'password'
@@ -79,6 +79,7 @@ export const LoginScreen = ({setUid,setName}) => {
                 />
 
                 <input type = 'submit' value = 'Enviar' disabled = {loading}/>
+                {/* <button onClick={handleSubmit} dusabled = {loading}>Enviar</button> */}
             </form>  
 
             {
