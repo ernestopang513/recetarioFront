@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchSinToken } from "../helpers/fetch";
-import { obtenerRecetaId, obtenerRecetas } from "../helpers/recetas";
+import { obtenerRecetaId } from "../helpers/recetas";
 
 
 // export const useFetch = () => {
@@ -118,7 +118,6 @@ export const useFetch2 = (parametro = '') => {
         let controller = new AbortController();
         const signal = controller.signal;
         let isActive = true;
-        // console.log(signal)    
         obtenerRecetaId(parametro, signal)
         .then(data => {
             if (isActive){
@@ -128,17 +127,13 @@ export const useFetch2 = (parametro = '') => {
                 });
 
             }
-            // controller = null;
         })
         
         return () => {
             isActive = false;
-            // console.log(!!controller);
             controller.abort();
-            // console.log('fetch abort');
-            // console.log(signal)
         };
-    }, []);
+    }, [parametro]);
 
     return state
 }

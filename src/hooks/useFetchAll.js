@@ -21,12 +21,19 @@ export const useFetchAlll = (endpoint, optional,data,method) => {
         let isActive = true;
         fetchConToken(endpoint, optional,data,method,signal)
             .then(data => {
-                if(isActive){
+                if(isActive&&data){
                     setState({
                         data,
                         loading: false,
                         error: false,
                         msg: ''
+                    })
+                }else if(isActive && !data){
+                    setState({
+                        data:null,
+                        loading:false,
+                        error:true,
+                        msg:'Hubo un error'
                     })
                 }
             })

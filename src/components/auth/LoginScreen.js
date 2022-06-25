@@ -5,29 +5,35 @@ import { useForm } from '../../hooks/useForm';
 
 export const LoginScreen = ({setUid,setName}) => {
     
-    
-    const [data, setData] = useState(null)
+    // const history = useHistory();
     const [loading, setLoading] = useState(false);
     const [error, seterror] = useState({
         value: false,
         msg: ''
     })
-    const [formValues,handleInputChange, resetValues] = useForm()            
+    const [formValues,handleInputChange] = useForm()            
     const {correo = '', password = ''} = formValues;
 
+  
     // useEffect(() => {
-    //     console.log('efecto')
-    // }, [data,loading,error])
-
+    //   console.log('loginScreen montado')
+      
+    
+    //   return () => {
+    //     console.log('loginScreen desmontado');
+    //     history.goForward();  
+    //   }
+    // }, [])
+    
 
     const handleSubmit = async(e) => {
         e.preventDefault();
         if(correo.replace(/\s+/g, '').length < 4 || password.replace(/\s+/g, '').length < 4 ){
-            alert('nop');
-            return;
-        }
-        setLoading(true);
-
+                alert('nop');
+                return;
+            }
+            setLoading(true);
+            
         try {
             const respuesta = await fetchSinToken('auth', 'login', formValues, 'POST');
             const body = await respuesta.json();
@@ -38,6 +44,7 @@ export const LoginScreen = ({setUid,setName}) => {
             setLoading(false);
             setUid(body.usuario.uid);
             setName(body.usuario.uid);
+            ////////////////////////////////////////////////
             // setName(body.usuario.nombre);
             // history.push('/crear');
             // history.push('/crear');
@@ -47,13 +54,14 @@ export const LoginScreen = ({setUid,setName}) => {
                 msg: 'Hubo un error'
             })
             setLoading(false);
-            console.log(error)
+            console.log(error);
+            console.log('loginScreen error');
         }
     }
 
 
     return (
-        <>
+        <div>
 
             <h3>Login screen</h3>
             <form onSubmit = {handleSubmit}>
@@ -88,6 +96,6 @@ export const LoginScreen = ({setUid,setName}) => {
             <Link
                 to = './register'
             >Registrate</Link>
-        </>
+        </div>
     )
 }

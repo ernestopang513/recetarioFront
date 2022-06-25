@@ -21,7 +21,7 @@ const obtenerRecetas = async() => {
     return null
   }
 };
-const obtenerRecetaId = async(parametro= '', signal) => {
+const obtenerRecetaId = async(parametro= '', signal = null) => {
   const token = localStorage.getItem('token') || '';
   try {
     const response = await fetch(`http://localhost:8080/api/recetas/${parametro}`,{
@@ -68,11 +68,12 @@ const obtenerUsuarios = async(parametro = '') => {
 }
 
 //Función para busqueda de usuarios
-const busquedaRecetas = async(parametro = '') => {
+const busquedaRecetas = async(parametro = '',signal = null) => {
   try{
     const url = `http://localhost:8080/api/buscar/recetas/${parametro}`;
     // const url = `https://recetario-pang.herokuapp.com/api/buscar/recetas/${parametro}`;
     const response = await fetch(url, {
+      signal,
       mode: 'cors'
     });
 
