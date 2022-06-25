@@ -23,7 +23,7 @@ export const useFetchCreateUsuario = () => {
             const respuesta = await fetchSinToken(endpoint, optional, data, method);
             const body = await respuesta.json()
             console.log(body);
-            if(Object.keys(body)[0] == 'errors'){
+            if(Object.keys(body)[0] === 'errors'){
                 // console.log(Object.keys(body)[0] == 'errors');
                 // console.log(Object.keys(body));
                 // console.log(typeof Object.keys(body));

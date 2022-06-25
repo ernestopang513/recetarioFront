@@ -28,7 +28,7 @@ export const useFetchAlll = (endpoint, optional,data,method) => {
                         error: false,
                         msg: ''
                     })
-                }else{
+                }else if(isActive && !data){
                     setState({
                         data:null,
                         loading:false,

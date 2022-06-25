@@ -1,6 +1,5 @@
 import React from 'react'
 import { useParams } from 'react-router'
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { useFetch2 } from '../../hooks/useFetch'
 import { RecetaItem } from './RecetaItem';
 

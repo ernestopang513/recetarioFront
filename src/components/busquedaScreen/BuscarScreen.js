@@ -5,7 +5,7 @@ export const BuscarScreen = ({uid}) => {
 
     console.log(uid)
     const [inputValue, setInputValue] = useState('');
-    const [buscar, setBuscar] = useState(null)
+    const [buscar, setBuscar] = useState(null);
     // const {data} = useFetchBusqueda(buscar)
     // console.log(buscar)
     const handleInputChange = ({target}) => {
@@ -41,7 +41,6 @@ export const BuscarScreen = ({uid}) => {
             </form>
             {(buscar &&
             <ResultadosDiv
-            
                 buscar = {buscar}
             />)
             }

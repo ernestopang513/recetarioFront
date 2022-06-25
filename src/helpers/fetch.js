@@ -17,7 +17,6 @@
 
 const fetchSinToken = (endpoint, optional = '', data, method = 'GET') => {
     
-    console.log('llega al helper')
     const url = `http://localhost:8080/api/${endpoint}/${optional}`;
     // const url = `https://recetario-pang.herokuapp.com/api/${endpoint}/${optional}`;
 
@@ -68,7 +67,7 @@ const fetchConToken = async(endpoint, optional = '', data, method = 'GET',signal
             const respuesta = await fetch(url,{
                 method,
                 signal,
-                mode: 'no-cors',
+                mode: 'cors',
                 headers:{
                     'x-token': token,
                     'content-type': 'application/json'

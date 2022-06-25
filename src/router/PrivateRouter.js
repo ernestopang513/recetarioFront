@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { RegisterScreen } from '../components/auth/RegisterScreen';
 import { CrearReceta } from '../components/crearReceta/CrearReceta';
 import { EdicionScreen } from '../components/misRecetasScreen/EdicionScreen';
 import { MisRecetasScreen } from '../components/misRecetasScreen/MisRecetasScreen';

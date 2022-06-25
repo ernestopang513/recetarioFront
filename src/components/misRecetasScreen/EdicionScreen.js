@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useFetch2 } from '../../hooks/useFetch';
 import { useFetchActualizaReceta } from '../../hooks/useFetchActualizaReceta';
@@ -16,7 +16,6 @@ export const EdicionScreen = () => {
   
 
   const {nombre=receta.nombre,ingredientes=receta.ingredientes,procedimiento=receta.procedimiento} = formValues;  
-  const {nombreInicial,ingredientesInicial,procedimientoInicial} = formValues;
 
   
   const handleSubmit = (e) => {

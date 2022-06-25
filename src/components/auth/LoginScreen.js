@@ -5,20 +5,26 @@ import { useForm } from '../../hooks/useForm';
 
 export const LoginScreen = ({setUid,setName}) => {
     
-    
-    const [data, setData] = useState(null)
+    // const history = useHistory();
     const [loading, setLoading] = useState(false);
     const [error, seterror] = useState({
         value: false,
         msg: ''
     })
-    const [formValues,handleInputChange, resetValues] = useForm()            
+    const [formValues,handleInputChange] = useForm()            
     const {correo = '', password = ''} = formValues;
 
+  
     // useEffect(() => {
-    //     console.log('efecto')
-    // }, [data,loading,error])
-
+    //   console.log('loginScreen montado')
+      
+    
+    //   return () => {
+    //     console.log('loginScreen desmontado');
+    //     history.goForward();  
+    //   }
+    // }, [])
+    
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -28,7 +34,6 @@ export const LoginScreen = ({setUid,setName}) => {
             }
             setLoading(true);
             
-            console.log('depurar')
         try {
             const respuesta = await fetchSinToken('auth', 'login', formValues, 'POST');
             const body = await respuesta.json();
