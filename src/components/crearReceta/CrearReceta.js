@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 export const CrearReceta = () => {
 
     const [{data,loading,error,msg}, postFuntion ] = useFetchCrearReceta();
-    console.log(data)
+    
             return (
         <>
             

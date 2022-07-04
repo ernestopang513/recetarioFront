@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import { CrearReceta } from '../components/crearReceta/CrearReceta';
 import { EdicionScreen } from '../components/misRecetasScreen/EdicionScreen';
 import { MisRecetasScreen } from '../components/misRecetasScreen/MisRecetasScreen';
+import { PrevistaScreen } from '../components/misRecetasScreen/PrevistaScreen';
 import { RecetaScreen } from '../components/recetasScreen/RecetaScreen';
 
 export const PrivateRouter = ({uid}) => {
@@ -36,10 +37,16 @@ export const PrivateRouter = ({uid}) => {
                 <Route
                     exact
                     path= '/private/gestionar/receta/:recetaId'
+                >
+                    <PrevistaScreen/>
+                </Route>
+                {/* <Route
+                    exact
+                    path= '/private/gestionar/receta/:recetaId'
 
                 >
                     <EdicionScreen/>
-                </Route>
+                </Route> */}
 
                 <Redirect to = '/'/>
 
