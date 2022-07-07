@@ -36,17 +36,17 @@ export const PrivateRouter = ({uid}) => {
 
                 <Route
                     exact
-                    path= '/private/gestionar/receta/:recetaId'
+                    path= '/private/gestionar/:recetaId'
                 >
                     <PrevistaScreen/>
                 </Route>
-                {/* <Route
+                <Route
                     exact
                     path= '/private/gestionar/receta/:recetaId'
 
                 >
                     <EdicionScreen/>
-                </Route> */}
+                </Route>
 
                 <Redirect to = '/'/>
 

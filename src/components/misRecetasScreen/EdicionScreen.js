@@ -1,18 +1,17 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { useFetch2 } from '../../hooks/useFetch';
 import { useFetchActualizaReceta } from '../../hooks/useFetchActualizaReceta';
 import { useForm } from '../../hooks/useForm';
 
 export const EdicionScreen = () => {
 
+  const history = useHistory();
   const {recetaId} = useParams();
 
   const {data:receta,loading} = useFetch2(recetaId);
   const [{data,loading2,error,msg},actualizarFuncion] = useFetchActualizaReceta();
   const [formValues ,handleInputChange] = useForm();
-  
-  
   
 
   const {nombre=receta.nombre,ingredientes=receta.ingredientes,procedimiento=receta.procedimiento} = formValues;  
@@ -37,6 +36,12 @@ export const EdicionScreen = () => {
     }
     
     actualizarFuncion('recetas', recetaId, formValues,'PUT');
+
+    setTimeout(() => {
+      !error && history.goBack();
+      
+    }, 1000);
+
     // resetValues();
   }
   // console.log(nombre)
@@ -87,7 +92,7 @@ export const EdicionScreen = () => {
       }
 
       {
-        data && <pre>{JSON.stringify(data)}</pre>
+        // data && <pre>{JSON.stringify(data)}</pre>
       }
 
       {
@@ -97,6 +102,7 @@ export const EdicionScreen = () => {
       {
         error && <span>{msg}</span>
       }
+
 
       {/* {
         receta && !loading && <input defaultValue={'value'} />

@@ -23,7 +23,7 @@ export const MisRecetasScreen = ({uid}) => {
             return  <Link
                       key= {receta._id}
                       className = 'cardReceta noStyle displayBlock'
-                      to = {`./gestionar/receta/${receta._id}`}
+                      to = {`./gestionar/${receta._id}`}
                     >{receta.nombre}</Link>
         })
         }
