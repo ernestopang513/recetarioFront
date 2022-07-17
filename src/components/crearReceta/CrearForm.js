@@ -1,19 +1,27 @@
 import React from 'react'
+import { useDinamicForm } from '../../hooks/useDinamicForm';
 import { useForm } from '../../hooks/useForm'
+import { InputDinamic } from '../Reutilizable/InputDinamic';
 
 export const CrearForm = ({postFuntion,loading}) => {
 
-    const [formValues,handleInputChange, resetValues] = useForm()            
-    const {nombre='',ingredientes = '',procedimiento = ''} = formValues;
+    const [formValues,handleInputChange, ] = useForm();
+    const [valuesI, handleInputChangeI, addInputI , deleteIngredienteI] =useDinamicForm();
+    const [valuesP, handleInputChangeP, addInputP , deleteIngredienteP] =useDinamicForm();
+            
+    const {nombre=''} = formValues;
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(nombre.replace(/\s+/g, '').length < 4 || ingredientes.replace(/\s+/g, '').length < 4 || procedimiento.replace(/\s+/g, '').length < 4){
-            alert('nop');
-            return;
-        }
-        postFuntion('recetas', undefined, formValues,'POST');
+        console.log(formValues);
+        console.log(valuesI);
+        console.log(valuesP);
+        // if(nombre.replace(/\s+/g, '').length < 4 || ingredientes.replace(/\s+/g, '').length < 4 || procedimiento.replace(/\s+/g, '').length < 4){
+        //     alert('nop');
+        //     return;
+        // }
+        // postFuntion('recetas', undefined, formValues,'POST');
         // resetValues();
     }
     return (
@@ -27,19 +35,21 @@ export const CrearForm = ({postFuntion,loading}) => {
                 onChange = {handleInputChange}
                 autoComplete = 'off'
             />
-
-            <label>Ingredientes</label>
-            <textarea 
-                name = 'ingredientes'
-                value = {ingredientes}
-                onChange = {handleInputChange}
+                        
+            <InputDinamic
+                values = {valuesI}
+                handleInputChange = {handleInputChangeI}
+                addInput = {addInputI}
+                deleteIngrediente = {deleteIngredienteI}
+                text = 'Ingredientes'
             />
 
-            <label>Procedimiento</label>
-            <textarea
-                name = 'procedimiento'
-                value = {procedimiento} 
-                onChange = {handleInputChange}
+            <InputDinamic
+                values = {valuesP}
+                handleInputChange = {handleInputChangeP}
+                addInput = {addInputP}
+                deleteIngrediente = {deleteIngredienteP}
+                text = 'Procedimiento'
             />
             <input 
                 type = 'submit' value= 'Subir receta'
