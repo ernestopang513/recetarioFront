@@ -1,4 +1,5 @@
 import React from 'react'
+import { objetosVacios } from '../../helpers/validaciones';
 import { useDinamicForm } from '../../hooks/useDinamicForm';
 import { useForm } from '../../hooks/useForm'
 import { InputDinamic } from '../Reutilizable/InputDinamic';
@@ -14,14 +15,21 @@ export const CrearForm = ({postFuntion,loading}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formValues);
-        console.log(valuesI);
-        console.log(valuesP);
+        // console.log(formValues);
+        // console.log(valuesI);
+        // console.log(valuesP);
+        const data = {formValues,valuesI,valuesP};
+        console.log(data);
+        // console.log(objetosVacios(valuesI))
+        if(objetosVacios(valuesI) || objetosVacios(valuesP) || nombre.replace(/\s+/g, '').length < 4){
+            alert('nop');
+        };
+        console.log(formValues.nombre.length);
         // if(nombre.replace(/\s+/g, '').length < 4 || ingredientes.replace(/\s+/g, '').length < 4 || procedimiento.replace(/\s+/g, '').length < 4){
         //     alert('nop');
         //     return;
         // }
-        // postFuntion('recetas', undefined, formValues,'POST');
+        // postFuntion('recetas', undefined, data,'POST');
         // resetValues();
     }
     return (
