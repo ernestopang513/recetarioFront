@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
+import { objetosVacios } from '../../helpers/validaciones';
+import { useDinamicForm } from '../../hooks/useDinamicForm';
 import { useFetch2 } from '../../hooks/useFetch';
 import { useFetchActualizaReceta } from '../../hooks/useFetchActualizaReceta';
 import { useForm } from '../../hooks/useForm';
+import { InputDinamic } from '../Reutilizable/InputDinamic';
+
+const generador = (arreglo= ['']) => {
+
+  const variable = arreglo.map(item => {
+    return {value: item}
+  });
+
+  return variable;
+};
+
 
 export const EdicionScreen = () => {
 
@@ -10,48 +23,37 @@ export const EdicionScreen = () => {
   const {recetaId} = useParams();
 
   const {data:receta,loading} = useFetch2(recetaId);
-  const [{data,loading2,error,msg},actualizarFuncion] = useFetchActualizaReceta();
-  const [formValues ,handleInputChange] = useForm();
+
+  const [valuesI, handleInputChangeI, addInputI , deleteIngredienteI,setValuesI] =useDinamicForm();
+  const [valuesP, handleInputChangeP, addInputP , deleteIngredienteP,setValuesP] =useDinamicForm();
+
+  const [{loading2,error,msg},actualizarFuncion] = useFetchActualizaReceta();
+  const [formValues ,handleInputChange, , setFormValues] = useForm();
   
-
-  const {nombre=receta.nombre,ingredientes=receta.ingredientes,procedimiento=receta.procedimiento} = formValues;  
-
+  const {nombre=receta.nombre} = formValues;
+  
+  
+  useEffect(() => {
+    setValuesI(generador(receta.ingredientes));
+    setValuesP(generador(receta.procedimiento));
+    setFormValues({nombre});
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading]);
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // console.log(nombreInicial);
-    // console.log(ingredientesInicial);
-    // console.log(procedimientoInicial);
-    // console.log(formValues)
-
-    if(Object.keys(formValues).length === 0){
-      alert('Debes editar la receta para modificarla.')
-      return  
-    }
-
-    if(nombre.replace(/\s+/g, '').length < 4 || ingredientes.toString().replace(/\s+/g, '').length < 4 || procedimiento.toString().replace(/\s+/g, '').length < 4){
-        alert('nop');
-        return;
+    if(objetosVacios(valuesI) || objetosVacios(valuesP) || nombre.replace(/\s+/g, '').length < 4){
+      alert('Las casillas vacias y los nombres menores a 4 caracteres no estan permitidos');
+      return;
     }
     
-    actualizarFuncion('recetas', recetaId, formValues,'PUT');
-
+    actualizarFuncion('recetas',recetaId,formValues,valuesI,valuesP,'PUT')
     setTimeout(() => {
-      !error && history.goBack();
-      
-    }, 1000);
-
-    // resetValues();
+          !error && history.goBack();
+          
+        }, 1000);
   }
-  // console.log(nombre)
-  // console.log(formValues)
-  // try{
-  //   let aux = ingredientes.toString();
-  //   console.log(aux)
-  // }catch{console.log('error')}
-  // // console.log(ingredientes.toString())
-  // console.log(procedimiento)
   
   return (
     <div>
@@ -71,18 +73,24 @@ export const EdicionScreen = () => {
             value={nombre}
             onChange = {handleInputChange} 
           />
-          <label className='marginTop1rem'>Ingredientes</label>
-          <textarea 
-            value={ingredientes}
-            name= 'ingredientes'
-            onChange={handleInputChange}
+          
+          <InputDinamic
+                values = {valuesI}
+                handleInputChange = {handleInputChangeI}
+                addInput = {addInputI}
+                deleteIngrediente = {deleteIngredienteI}
+                text = 'Ingredientes'
+            />
+
+          <InputDinamic
+              values = {valuesP}
+              handleInputChange = {handleInputChangeP}
+              addInput = {addInputP}
+              deleteIngrediente = {deleteIngredienteP}
+              text = 'Procedimiento'
           />
-          <label className='marginTop1rem'>Procedimiento</label>
-          <textarea 
-            value={procedimiento}
-            name = 'procedimiento'
-            onChange={handleInputChange}
-          />
+
+
           <input 
                 type = 'submit' value= 'Subir receta'
                 disabled = {loading2}

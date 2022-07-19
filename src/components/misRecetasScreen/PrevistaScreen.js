@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { useFetch2 } from '../../hooks/useFetch';
-import { useFetchAlll } from '../../hooks/useFetchAll';
 import { useFetchBorrarRerecta } from '../../hooks/useFetchBorrarReceta';
 import { RecetaItem } from '../recetasScreen/RecetaItem';
 

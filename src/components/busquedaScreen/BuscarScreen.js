@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { ResultadosDiv } from './ResultadosDiv';
 
-export const BuscarScreen = ({uid}) => {
+export const BuscarScreen = () => {
 
-    console.log(uid)
     const [inputValue, setInputValue] = useState('');
     const [buscar, setBuscar] = useState(null);
     // const {data} = useFetchBusqueda(buscar)

@@ -19,13 +19,22 @@
 const objetosVacios = (arreglo) => {
 
     const bandera = arreglo.some(elem => {
-        return (elem.value == '' || elem.value.replace(/\s+/g, '').length < 3)
+        return (elem.value === '' || elem.value.replace(/\s+/g, '').length < 3)
     })
-
+    //regresa true en caso de encontrar alguna de las condiciones establecidas
     return bandera;
 
 };
 
+const extraeArreglo = (temporal) => {
+    const arreglo = temporal.map(({value}) => {
+        const valor = value.trim();
+        return valor
+    })
+    return arreglo;
+};
+
 export{
-    objetosVacios
+    objetosVacios,
+    extraeArreglo
 };

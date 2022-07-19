@@ -24,13 +24,6 @@ export const CrearForm = ({postFuntion,loading}) => {
         if(objetosVacios(valuesI) || objetosVacios(valuesP) || nombre.replace(/\s+/g, '').length < 4){
             alert('nop');
         };
-        console.log(formValues.nombre.length);
-        // if(nombre.replace(/\s+/g, '').length < 4 || ingredientes.replace(/\s+/g, '').length < 4 || procedimiento.replace(/\s+/g, '').length < 4){
-        //     alert('nop');
-        //     return;
-        // }
-        // postFuntion('recetas', undefined, data,'POST');
-        // resetValues();
     }
     return (
         <form className= "formContainer container" onSubmit = {handleSubmit}>

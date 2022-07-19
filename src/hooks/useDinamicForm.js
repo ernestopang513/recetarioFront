@@ -18,10 +18,13 @@ export const useDinamicForm = (initialState = [{value: ''}]) => {
     const deleteIngrediente = (e,index) => {
         e.preventDefault();
         let data = [...values];
+        if(data.length === 1){
+            return
+        }
         data.splice(index,1);
         setValues([
             ...data
         ]);
     }
-    return [values,handleInputChange,addInput,deleteIngrediente];
+    return [values,handleInputChange,addInput,deleteIngrediente,setValues];
   };

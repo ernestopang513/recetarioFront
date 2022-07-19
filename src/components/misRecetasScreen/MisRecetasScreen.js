@@ -5,7 +5,6 @@ import { useFetchAlll } from '../../hooks/useFetchAll';
 export const MisRecetasScreen = ({uid}) => {
 
   const {data, loading, error,msg} = useFetchAlll ('usuarios', uid, undefined, undefined); 
-    
   return (
 
       <div className='container' >

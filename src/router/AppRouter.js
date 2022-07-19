@@ -27,15 +27,12 @@ export const AppRouter = () => {
         const uid1 = localStorage.getItem('uid') || '';
         if(!(!!uid1)){
             setWait(false);
-            console.log(uid1);
-            console.log('if')
             return
         }
         setUid(uid1);
         setName(name1);
         setTimeout(() => {
             setWait(false);
-            console.log('setWait')
         }, 500);
         // setWait(false);
 
@@ -101,7 +98,7 @@ export const AppRouter = () => {
                         path='/buscar'
 
                     >
-                        <BuscarScreen uid = {uid}/>
+                        <BuscarScreen />
                     </Route>
                     {/* <Route
                         exact

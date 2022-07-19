@@ -7,7 +7,6 @@ import { PrevistaScreen } from '../components/misRecetasScreen/PrevistaScreen';
 import { RecetaScreen } from '../components/recetasScreen/RecetaScreen';
 
 export const PrivateRouter = ({uid}) => {
-    console.log('paso por privateRouter')
     return (
         <div>
             <Switch>

@@ -5,7 +5,6 @@ import { RegisterScreen } from '../components/auth/RegisterScreen';
 
 
 export const AuthRouter = ({setUid,setName}) => {
-  console.log('paso por authROuter')
   return( 
     <div>
         <Switch>
